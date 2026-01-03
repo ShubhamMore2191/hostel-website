@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>ABC Hostel</h1>
+<p>Welcome to our hostel website</p>
+
+</body>
+</html>
