@@ -25,11 +25,11 @@ header{
 
 header h1{
   margin:0;
-  color:#3f2a0a; /* DARK HOSTEL NAME */
+  color:#3f2a0a; /* dark hostel name */
 }
 
 header p{
-  margin:5px 0 0;
+  margin:6px 0 0;
   color:#fff;
 }
 
@@ -37,7 +37,7 @@ header p{
 nav{
   background:#78350f;
   text-align:center;
-  padding:10px;
+  padding:12px;
 }
 
 nav a{
@@ -47,19 +47,24 @@ nav a{
   font-weight:500;
 }
 
-/* SECTIONS */
+/* SECTION */
 section{
   max-width:1000px;
   background:#fff;
   margin:25px auto;
   padding:25px;
   border-radius:12px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
 }
 
 h2{
-  color:#f59e0b; /* LIGHT ORANGE HEADINGS */
   margin-top:0;
+  color:#f59e0b; /* light orange headings */
+}
+
+/* LIST */
+ul{
+  padding-left:18px;
 }
 
 /* GALLERY */
@@ -69,18 +74,31 @@ h2{
   justify-content:center;
 }
 
-.gallery img{
+.gallery-item{
+  position:relative;
+  margin:12px;
+}
+
+.gallery-item img{
   width:240px;
   height:170px;
   object-fit:cover;
-  margin:12px;
   border-radius:12px;
   box-shadow:0 6px 12px rgba(0,0,0,.2);
-  transition:transform .3s;
 }
 
-.gallery img:hover{
-  transform:scale(1.05);
+/* IMAGE LABEL */
+.gallery-item span{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.65);
+  color:#fff;
+  text-align:center;
+  padding:6px;
+  font-size:14px;
+  border-radius:0 0 12px 12px;
 }
 
 /* FOOTER */
@@ -104,6 +122,8 @@ footer{
   <a href="#about">About</a>
   <a href="#rooms">Rooms</a>
   <a href="#amenities">Amenities</a>
+  <a href="#fees">Fees</a>
+  <a href="#security">Security</a>
   <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -111,16 +131,18 @@ footer{
 <section id="about">
   <h2>About Hostel</h2>
   <p>
-    Mahi Girls Hostel provides a safe, hygienic and comfortable stay
-    for students with all basic facilities.
+    Mahi Girls Hostel provides a safe, hygienic and disciplined environment
+    for students. The hostel focuses on comfort, security and academic
+    support for girls coming from different locations.
   </p>
 </section>
 
 <section id="rooms">
   <h2>Rooms</h2>
   <ul>
-    <li>Single & Double Sharing Rooms</li>
-    <li>Well Ventilated</li>
+    <li>Single Sharing Rooms</li>
+    <li>Double Sharing Rooms</li>
+    <li>Well Ventilated & Furnished</li>
     <li>Attached Washrooms</li>
   </ul>
 </section>
@@ -128,10 +150,31 @@ footer{
 <section id="amenities">
   <h2>Amenities</h2>
   <ul>
-    <li>Mess Facility</li>
+    <li>Mess Facility (Veg Meals)</li>
     <li>Study Room</li>
-    <li>24/7 Water Supply</li>
-    <li>Clean & Secure Environment</li>
+    <li>24/7 Water & Electricity</li>
+    <li>Regular Cleaning</li>
+  </ul>
+</section>
+
+<section id="fees">
+  <h2>Fees Structure</h2>
+  <ul>
+    <li>Single Sharing: ₹6000 per month</li>
+    <li>Double Sharing: ₹9000 per month</li>
+    <li>Mess Charges: Included</li>
+    <li>Security Deposit: Refundable</li>
+  </ul>
+</section>
+
+<section id="security">
+  <h2>Security & Rules</h2>
+  <ul>
+    <li>24/7 CCTV Surveillance</li>
+    <li>Biometric / Register Entry</li>
+    <li>Fixed In-Time for Students</li>
+    <li>No Outside Visitors Allowed</li>
+    <li>Strict Discipline & Safety Rules</li>
   </ul>
 </section>
 
@@ -139,12 +182,37 @@ footer{
   <h2>Hostel Gallery</h2>
 
   <div class="gallery">
-    <img src="images/hostel front.jpg" alt="Hostel Front">
-    <img src="images/hostel room.jpg" alt="Hostel Room">
-    <img src="images/hostel room2.jpg" alt="Hostel Room 2">
-    <img src="images/hostel_mess.jpg" alt="Mess">
-    <img src="images/study room.png" alt="Study Room">
-    <img src="images/washroom.jpg" alt="Washroom">
+
+    <div class="gallery-item">
+      <img src="images/hostel front.jpg">
+      <span>Hostel Front</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel room.jpg">
+      <span>Room 1</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel room2.jpg">
+      <span>Room 2</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel_mess.jpg">
+      <span>Mess Area</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/study room.png">
+      <span>Study Room</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/washroom.jpg">
+      <span>Washroom</span>
+    </div>
+
   </div>
 </section>
 
