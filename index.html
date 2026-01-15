@@ -3,127 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Girls Hostel | Mahi Hostel</title>
+<title>Mahi Girls Hostel</title>
 
 <style>
 *{
   box-sizing:border-box;
-  font-family:Segoe UI,Arial,sans-serif;
+  font-family:Segoe UI, Arial, sans-serif;
 }
 
 body{
   margin:0;
-  min-height:100vh;
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
 
-/* LOGIN */
-.login-box{
-  background:#fff;
-  width:100%;
-  max-width:400px;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
-  text-align:center;
-  margin:80px auto;
-}
-
-.login-box img{
-  width:80px;
-  border-radius:50%;
-  margin-bottom:10px;
-}
-
-h1{
-  color:#f59e0b;
-  margin-bottom:5px;
-}
-
-p{
-  font-size:13px;
-  color:#555;
-}
-
-.field{
-  margin-bottom:15px;
-  text-align:left;
-}
-
-label{
-  display:block;
-  font-size:13px;
-  margin-bottom:6px;
-}
-
-input,select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid #d1d5db;
-}
-
-.btn{
-  width:100%;
-  padding:12px;
-  background:#fb923c;
-  color:#fff;
-  border:none;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:600;
-  cursor:pointer;
-}
-
-.btn:hover{
-  background:#f97316;
-}
-
-/* MAIN CONTENT */
-#hostel-content{
-  display:none;
-  background:#fff7ed;
-}
-
+/* HEADER */
 header{
   background:#fb923c;
-  color:#fff;
   text-align:center;
-  padding:20px;
+  padding:25px;
 }
 
-header img{
-  width:80px;
+header h1{
+  margin:0;
+  color:#3f2a0a; /* DARK HOSTEL NAME */
 }
 
+header p{
+  margin:5px 0 0;
+  color:#fff;
+}
+
+/* NAV */
 nav{
   background:#78350f;
-  padding:10px;
   text-align:center;
+  padding:10px;
 }
 
 nav a{
   color:#fff;
   margin:0 12px;
   text-decoration:none;
-  font-size:14px;
+  font-weight:500;
 }
 
-nav a:hover{
-  text-decoration:underline;
-}
-
+/* SECTIONS */
 section{
   max-width:1000px;
   background:#fff;
-  margin:20px auto;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 0 10px rgba(0,0,0,.1);
+  margin:25px auto;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 h2{
-  color:#f59e0b;
+  color:#f59e0b; /* LIGHT ORANGE HEADINGS */
+  margin-top:0;
 }
 
 /* GALLERY */
@@ -134,12 +70,12 @@ h2{
 }
 
 .gallery img{
-  width:230px;
-  height:160px;
+  width:240px;
+  height:170px;
   object-fit:cover;
   margin:12px;
-  border-radius:10px;
-  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,.2);
   transition:transform .3s;
 }
 
@@ -147,6 +83,7 @@ h2{
   transform:scale(1.05);
 }
 
+/* FOOTER */
 footer{
   background:#78350f;
   color:#fff;
@@ -158,38 +95,7 @@ footer{
 
 <body>
 
-<!-- LOGIN PAGE -->
-<div class="login-box">
-  <img src="images/logo.png" alt="Hostel Logo">
-  <h1>Girls Hostel</h1>
-
-  <div class="field">
-    <label>Login As</label>
-    <select>
-      <option>Student</option>
-      <option>Warden</option>
-      <option>Admin</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <label>Username / ID</label>
-    <input type="text" placeholder="Enter ID">
-  </div>
-
-  <div class="field">
-    <label>Password</label>
-    <input type="password" placeholder="Enter password">
-  </div>
-
-  <button class="btn" onclick="login()">Login</button>
-</div>
-
-<!-- HOSTEL CONTENT -->
-<div id="hostel-content">
-
 <header>
-  <img src="images/logo.png" alt="Hostel Logo">
   <h1>Mahi Girls Hostel</h1>
   <p>CIDCO N7, Ch. Sambhaji Nagar</p>
 </header>
@@ -198,84 +104,61 @@ footer{
   <a href="#about">About</a>
   <a href="#rooms">Rooms</a>
   <a href="#amenities">Amenities</a>
-  <a href="#fees">Fees</a>
-  <a href="#security">Security</a>
   <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <section id="about">
   <h2>About Hostel</h2>
-  <p>Mahi Hostel provides safe and comfortable accommodation for girls.</p>
+  <p>
+    Mahi Girls Hostel provides a safe, hygienic and comfortable stay
+    for students with all basic facilities.
+  </p>
 </section>
 
 <section id="rooms">
   <h2>Rooms</h2>
   <ul>
-    <li>Single Room</li>
-    <li>Double Sharing</li>
-    <li>Mess Included</li>
+    <li>Single & Double Sharing Rooms</li>
+    <li>Well Ventilated</li>
+    <li>Attached Washrooms</li>
   </ul>
 </section>
 
 <section id="amenities">
   <h2>Amenities</h2>
   <ul>
-    <li>Wi-Fi</li>
-    <li>24/7 Water</li>
-    <li>Study Area</li>
     <li>Mess Facility</li>
-  </ul>
-</section>
-
-<section id="fees">
-  <h2>Fees Structure</h2>
-  <ul>
-    <li>Admission Fee: ₹3,000</li>
-    <li>Monthly Rent: ₹6,000 – ₹9,000</li>
-    <li>Deposit: ₹5,000 (Refundable)</li>
-  </ul>
-</section>
-
-<section id="security">
-  <h2>Safety & Security</h2>
-  <ul>
-    <li>24/7 CCTV Surveillance</li>
-    <li>Female Warden Available</li>
-    <li>Secure Entry & Exit</li>
+    <li>Study Room</li>
+    <li>24/7 Water Supply</li>
+    <li>Clean & Secure Environment</li>
   </ul>
 </section>
 
 <section id="gallery">
   <h2>Hostel Gallery</h2>
+
   <div class="gallery">
-    <img src="images/hostel-front.jpg" alt="Hostel Front">
-    <img src="images/room1.jpg" alt="Single Room">
-    <img src="images/room2.jpg" alt="Double Room">
-    <img src="images/mess.jpg" alt="Mess Area">
+    <img src="images/hostel front.jpg" alt="Hostel Front">
+    <img src="images/hostel room.jpg" alt="Hostel Room">
+    <img src="images/hostel room2.jpg" alt="Hostel Room 2">
+    <img src="images/hostel_mess.jpg" alt="Mess">
+    <img src="images/study room.png" alt="Study Room">
     <img src="images/washroom.jpg" alt="Washroom">
-    <img src="images/study-room.jpg" alt="Study Room">
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Phone: +91 70665632xx</p>
-  <p>Email: mahihostel7@gmail.com</p>
+  <p>
+    📍 CIDCO N7, Ch. Sambhaji Nagar<br>
+    📞 +91 XXXXXXXXXX
+  </p>
 </section>
 
 <footer>
-  © 2026 Mahi Hostel. All Rights Reserved.
+  © 2026 Mahi Girls Hostel. All Rights Reserved.
 </footer>
-
-</div>
-
-<script>
-function login(){
-  document.querySelector('.login-box').style.display = 'none';
-  document.getElementById('hostel-content').style.display = 'block';
-}
-</script>
 
 </body>
 </html>
