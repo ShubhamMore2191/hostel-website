@@ -1,150 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Girls Hostel | Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girls Hostel | Mahi Hostel</title>
 
-  <style>
-    *{
-      box-sizing:border-box;
-      font-family:Segoe UI,Arial,sans-serif
-    }
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Segoe UI,Arial,sans-serif;
+}
 
-    body{
-      margin:0;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
-    }
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+}
 
-    /* LOGIN BOX */
-    .login-box{
-      background:#fff;
-      width:100%;
-      max-width:400px;
-      padding:30px;
-      border-radius:18px;
-      box-shadow:0 20px 40px rgba(0,0,0,.3);
-      text-align:center;
-    }
+/* LOGIN BOX */
+.login-box{
+  background:#fff;
+  width:100%;
+  max-width:400px;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  text-align:center;
+  margin:80px auto;
+}
 
-    .login-box img{
-      width:80px;
-      margin-bottom:10px;
-      border-radius:50%;
-    }
+.login-box img{
+  width:80px;
+  border-radius:50%;
+  margin-bottom:10px;
+}
 
-    h1{margin-bottom:5px;color:#6b21a8}
-    p{font-size:13px;color:#555;margin-bottom:20px}
+h1{color:#6b21a8;margin-bottom:5px}
+p{font-size:13px;color:#555}
 
-    .field{margin-bottom:16px;text-align:left}
-    label{display:block;font-size:13px;margin-bottom:6px}
+.field{
+  margin-bottom:15px;
+  text-align:left;
+}
 
-    input,select{
-      width:100%;
-      padding:12px;
-      border-radius:10px;
-      border:1px solid #d1d5db
-    }
+label{
+  display:block;
+  font-size:13px;
+  margin-bottom:6px;
+}
 
-    .btn{
-      width:100%;
-      padding:12px;
-      background:#7c3aed;
-      color:#fff;
-      border:none;
-      border-radius:12px;
-      font-size:15px;
-      font-weight:600;
-      cursor:pointer
-    }
+input,select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #d1d5db;
+}
 
-    .btn:hover{background:#6d28d9}
+.btn{
+  width:100%;
+  padding:12px;
+  background:#7c3aed;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
 
-    .extra{margin-top:15px;font-size:12px}
+.btn:hover{background:#6d28d9}
 
-    /* HOSTEL CONTENT */
-    #hostel-content{
-      display:none;
-      width:100%;
-      background:#f4f4f4;
-    }
+.extra{
+  margin-top:15px;
+  font-size:12px;
+}
 
-    header{
-      background:#0056b3;
-      color:white;
-      padding:20px;
-      text-align:center;
-    }
+/* MAIN CONTENT */
+#hostel-content{
+  display:none;
+  background:#f4f4f4;
+}
 
-    header img{
-      width:80px;
-      margin-bottom:10px;
-    }
+header{
+  background:#0056b3;
+  color:#fff;
+  text-align:center;
+  padding:20px;
+}
 
-    nav{
-      background:#333;
-      padding:10px;
-      text-align:center;
-    }
+header img{
+  width:80px;
+}
 
-    nav a{
-      color:white;
-      margin:0 15px;
-      text-decoration:none;
-    }
+nav{
+  background:#333;
+  padding:10px;
+  text-align:center;
+}
 
-    nav a:hover{text-decoration:underline}
+nav a{
+  color:#fff;
+  margin:0 12px;
+  text-decoration:none;
+  font-size:14px;
+}
 
-    section{
-      padding:20px;
-      margin:15px auto;
-      background:white;
-      max-width:1000px;
-      border-radius:8px;
-      box-shadow:0 0 10px rgba(0,0,0,0.1);
-    }
+nav a:hover{text-decoration:underline}
 
-    h2{color:#0056b3}
+section{
+  max-width:1000px;
+  background:#fff;
+  margin:20px auto;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,.1);
+}
 
-    ul{list-style:disc inside}
+h2{color:#0056b3}
 
-    /* GALLERY */
-    .gallery{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-around;
-    }
+/* GALLERY */
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 
-    .gallery img{
-      width:220px;
-      height:150px;
-      object-fit:cover;
-      margin:10px;
-      border-radius:8px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-    }
+.gallery img{
+  width:230px;
+  height:160px;
+  object-fit:cover;
+  margin:12px;
+  border-radius:10px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  transition:transform .3s;
+}
 
-    footer{
-      text-align:center;
-      padding:15px;
-      background:#333;
-      color:white;
-      margin-top:20px;
-    }
-  </style>
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+footer{
+  background:#333;
+  color:#fff;
+  text-align:center;
+  padding:15px;
+}
+</style>
 </head>
 
 <body>
 
 <!-- LOGIN PAGE -->
 <div class="login-box">
-  <img src="images/logo.png" alt="Mahi Hostel Logo">
+  <img src="images/logo.png" alt="Hostel Logo">
   <h1>Girls Hostel</h1>
-  <p>Secure Login Portal</p>
+  <p>Demo Login (College Project)</p>
 
   <div class="field">
     <label>Login As</label>
@@ -157,7 +167,7 @@
 
   <div class="field">
     <label>Username / ID</label>
-    <input type="text" placeholder="Enter your ID">
+    <input type="text" placeholder="Enter ID">
   </div>
 
   <div class="field">
@@ -165,102 +175,104 @@
     <input type="password" placeholder="Enter password">
   </div>
 
-  <button class="btn">Login</button>
+  <button class="btn" onclick="login()">Login</button>
 
   <div class="extra">
-    <a href="#">Forgot Password?</a><br>
-    Demo Project • Girls Hostel Management
+    Demo Project • No real authentication
   </div>
 </div>
 
-<!-- HOSTEL CONTENT -->
+<!-- MAIN HOSTEL CONTENT -->
 <div id="hostel-content">
 
-  <header>
-    <img src="images/logo.png" alt="Mahi Hostel Logo">
-    <h1>Mahi Hostel</h1>
-    <p>CIDCO N7, near CIDCO Police Station, Ch. Sambhaji Nagar</p>
-  </header>
+<header>
+  <img src="images/logo.png" alt="Hostel Logo">
+  <h1>Mahi Girls Hostel</h1>
+  <p>CIDCO N7, Ch. Sambhaji Nagar</p>
+</header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#rooms">Rooms</a>
-    <a href="#amenities">Amenities</a>
-    <a href="#rules">Rules</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<nav>
+  <a href="#about">About</a>
+  <a href="#rooms">Rooms</a>
+  <a href="#amenities">Amenities</a>
+  <a href="#fees">Fees</a>
+  <a href="#security">Security</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <section id="about">
-    <h2>About Hostel</h2>
-    <p>Mahi Hostel is a safe and comfortable accommodation for students and working professionals.</p>
-    <ul>
-      <li>Single & Double Rooms</li>
-      <li>Mess with healthy food</li>
-      <li>24/7 Security</li>
-      <li>Wi-Fi connectivity</li>
-      <li>Study & recreation areas</li>
-    </ul>
-  </section>
+<section id="about">
+  <h2>About Hostel</h2>
+  <p>Mahi Hostel provides safe and comfortable accommodation for girls.</p>
+</section>
 
-  <section id="rooms">
-    <h2>Rooms & Accommodations</h2>
-    <ul>
-      <li>Single Room</li>
-      <li>Double Room</li>
-      <li>Mess Included</li>
-    </ul>
-    <p>Contact us for updated pricing.</p>
-  </section>
+<section id="rooms">
+  <h2>Rooms</h2>
+  <ul>
+    <li>Single Room</li>
+    <li>Double Sharing</li>
+    <li>Mess Included</li>
+  </ul>
+</section>
 
-  <section id="amenities">
-    <h2>Amenities</h2>
-    <ul>
-      <li>Wi-Fi</li>
-      <li>Air Conditioning</li>
-      <li>Bed & Study Table</li>
-      <li>Mess Facilities</li>
-    </ul>
-  </section>
+<section id="amenities">
+  <h2>Amenities</h2>
+  <ul>
+    <li>Wi-Fi</li>
+    <li>24/7 Water</li>
+    <li>Study Area</li>
+    <li>Mess Facility</li>
+  </ul>
+</section>
 
-  <section id="rules">
-    <h2>Rules & Regulations</h2>
-    <p><b>Timings:</b> 6:00 AM – 10:00 PM</p>
-    <ul>
-      <li>Visitors allowed: 10:00 AM – 8:00 PM</li>
-      <li>No alcohol, tobacco or drugs</li>
-      <li>No pets or weapons</li>
-    </ul>
-  </section>
+<section id="fees">
+  <h2>Fees Structure</h2>
+  <ul>
+    <li>Admission Fee: ₹3,000</li>
+    <li>Monthly Rent: ₹6,000 – ₹9,000</li>
+    <li>Deposit: ₹5,000 (Refundable)</li>
+  </ul>
+</section>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="images/room1.jpg" alt="Room">
-      <img src="images/room2.jpg" alt="Room">
-      <img src="images/mess.jpg" alt="Mess">
-      <img src="images/common.jpg" alt="Common Area">
-    </div>
-  </section>
+<section id="security">
+  <h2>Safety & Security</h2>
+  <ul>
+    <li>24/7 CCTV</li>
+    <li>Female Warden</li>
+    <li>Secure Entry</li>
+  </ul>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Phone: +91 70665632xx</p>
-    <p>Email: mahihostel7@gmail.com</p>
-  </section>
+<section id="gallery">
+  <h2>Hostel Gallery</h2>
+  <div class="gallery">
+    <img src="images/hostel-front.jpg" alt="Hostel Front">
+    <img src="images/room1.jpg" alt="Room">
+    <img src="images/room2.jpg" alt="Room">
+    <img src="images/mess.jpg" alt="Mess">
+    <img src="images/common.jpg" alt="Common Area">
+    <img src="images/washroom.jpg" alt="Washroom">
+    <img src="images/study-room.jpg" alt="Study Room">
+  </div>
+</section>
 
-  <footer>
-    © 2026 Mahi Hostel. All Rights Reserved.
-  </footer>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Phone: +91 70665632xx</p>
+  <p>Email: mahihostel7@gmail.com</p>
+</section>
+
+<footer>
+  © 2026 Mahi Hostel | College Project
+</footer>
 
 </div>
 
 <script>
-  document.querySelector('.btn').onclick = function(){
-    document.querySelector('.login-box').style.display='none';
-    document.getElementById('hostel-content').style.display='block';
-    document.body.style.display='block';
-  }
+function login(){
+  document.querySelector('.login-box').style.display='none';
+  document.getElementById('hostel-content').style.display='block';
+}
 </script>
 
 </body>
