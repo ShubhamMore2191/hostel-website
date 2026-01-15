@@ -16,6 +16,52 @@ body{
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
 
+/* LOGIN */
+#login-box{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.login-card{
+  background:#fff;
+  padding:30px;
+  width:320px;
+  border-radius:14px;
+  box-shadow:0 15px 30px rgba(0,0,0,.25);
+  text-align:center;
+}
+
+.login-card h2{
+  color:#3f2a0a;
+  margin-bottom:20px;
+}
+
+.login-card input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.login-card button{
+  width:100%;
+  padding:12px;
+  background:#fb923c;
+  border:none;
+  color:#fff;
+  font-size:15px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* MAIN SITE */
+#main-site{
+  display:none;
+}
+
 /* HEADER */
 header{
   background:#fb923c;
@@ -25,7 +71,7 @@ header{
 
 header h1{
   margin:0;
-  color:#3f2a0a; /* dark hostel name */
+  color:#3f2a0a;
 }
 
 header p{
@@ -59,12 +105,7 @@ section{
 
 h2{
   margin-top:0;
-  color:#f59e0b; /* light orange headings */
-}
-
-/* LIST */
-ul{
-  padding-left:18px;
+  color:#f59e0b;
 }
 
 /* GALLERY */
@@ -87,7 +128,6 @@ ul{
   box-shadow:0 6px 12px rgba(0,0,0,.2);
 }
 
-/* IMAGE LABEL */
 .gallery-item span{
   position:absolute;
   bottom:0;
@@ -113,6 +153,23 @@ footer{
 
 <body>
 
+<!-- LOGIN PAGE -->
+<div id="login-box">
+  <div class="login-card">
+    <h2>Student Login</h2>
+    <input type="text" id="studentId" placeholder="Student ID">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p style="font-size:12px;color:#666;margin-top:10px;">
+      Demo Login<br>
+      ID: student | Password: 1234
+    </p>
+  </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="main-site">
+
 <header>
   <h1>Mahi Girls Hostel</h1>
   <p>CIDCO N7, Ch. Sambhaji Nagar</p>
@@ -132,8 +189,7 @@ footer{
   <h2>About Hostel</h2>
   <p>
     Mahi Girls Hostel provides a safe, hygienic and disciplined environment
-    for students. The hostel focuses on comfort, security and academic
-    support for girls coming from different locations.
+    for students with a focus on comfort, security and academic support.
   </p>
 </section>
 
@@ -161,9 +217,9 @@ footer{
   <h2>Fees Structure</h2>
   <ul>
     <li>Single Sharing: ₹6000 per month</li>
-    <li>Double Sharing: ₹9000 per month</li>
+    <li>Double Sharing: ₹8000 per month</li>
     <li>Mess Charges: Included</li>
-    <li>Security Deposit: Refundable</li>
+    <li>Security Deposit: ₹4000 (Refundable)</li>
   </ul>
 </section>
 
@@ -182,7 +238,6 @@ footer{
   <h2>Hostel Gallery</h2>
 
   <div class="gallery">
-
     <div class="gallery-item">
       <img src="images/hostel front.jpg">
       <span>Hostel Front</span>
@@ -212,7 +267,6 @@ footer{
       <img src="images/washroom.jpg">
       <span>Washroom</span>
     </div>
-
   </div>
 </section>
 
@@ -220,13 +274,29 @@ footer{
   <h2>Contact</h2>
   <p>
     📍 CIDCO N7, Ch. Sambhaji Nagar<br>
-    📞 +91 7066XX32XX
+    📞 +91 XXXXXXXXXX
   </p>
 </section>
 
 <footer>
   © 2026 Mahi Girls Hostel. All Rights Reserved.
 </footer>
+
+</div>
+
+<script>
+function login(){
+  const id = document.getElementById("studentId").value;
+  const pass = document.getElementById("password").value;
+
+  if(id === "student" && pass === "1234"){
+    document.getElementById("login-box").style.display = "none";
+    document.getElementById("main-site").style.display = "block";
+  } else {
+    alert("Invalid Student ID or Password");
+  }
+}
+</script>
 
 </body>
 </html>
