@@ -14,17 +14,17 @@
 body{
   margin:0;
   min-height:100vh;
-  background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+  background:linear-gradient(135deg,#fde68a,#fdba74);
 }
 
-/* LOGIN BOX */
+/* LOGIN */
 .login-box{
   background:#fff;
   width:100%;
   max-width:400px;
   padding:30px;
   border-radius:18px;
-  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
   text-align:center;
   margin:80px auto;
 }
@@ -35,8 +35,15 @@ body{
   margin-bottom:10px;
 }
 
-h1{color:#6b21a8;margin-bottom:5px}
-p{font-size:13px;color:#555}
+h1{
+  color:#f59e0b;
+  margin-bottom:5px;
+}
+
+p{
+  font-size:13px;
+  color:#555;
+}
 
 .field{
   margin-bottom:15px;
@@ -59,7 +66,7 @@ input,select{
 .btn{
   width:100%;
   padding:12px;
-  background:#7c3aed;
+  background:#fb923c;
   color:#fff;
   border:none;
   border-radius:12px;
@@ -68,21 +75,18 @@ input,select{
   cursor:pointer;
 }
 
-.btn:hover{background:#6d28d9}
-
-.extra{
-  margin-top:15px;
-  font-size:12px;
+.btn:hover{
+  background:#f97316;
 }
 
 /* MAIN CONTENT */
 #hostel-content{
   display:none;
-  background:#f4f4f4;
+  background:#fff7ed;
 }
 
 header{
-  background:#0056b3;
+  background:#fb923c;
   color:#fff;
   text-align:center;
   padding:20px;
@@ -93,7 +97,7 @@ header img{
 }
 
 nav{
-  background:#333;
+  background:#78350f;
   padding:10px;
   text-align:center;
 }
@@ -105,7 +109,9 @@ nav a{
   font-size:14px;
 }
 
-nav a:hover{text-decoration:underline}
+nav a:hover{
+  text-decoration:underline;
+}
 
 section{
   max-width:1000px;
@@ -116,7 +122,9 @@ section{
   box-shadow:0 0 10px rgba(0,0,0,.1);
 }
 
-h2{color:#0056b3}
+h2{
+  color:#f59e0b;
+}
 
 /* GALLERY */
 .gallery{
@@ -140,7 +148,7 @@ h2{color:#0056b3}
 }
 
 footer{
-  background:#333;
+  background:#78350f;
   color:#fff;
   text-align:center;
   padding:15px;
@@ -154,7 +162,6 @@ footer{
 <div class="login-box">
   <img src="images/logo.png" alt="Hostel Logo">
   <h1>Girls Hostel</h1>
-  <p>Demo Login (College Project)</p>
 
   <div class="field">
     <label>Login As</label>
@@ -176,13 +183,9 @@ footer{
   </div>
 
   <button class="btn" onclick="login()">Login</button>
-
-  <div class="extra">
-    Demo Project • No real authentication
-  </div>
 </div>
 
-<!-- MAIN HOSTEL CONTENT -->
+<!-- HOSTEL CONTENT -->
 <div id="hostel-content">
 
 <header>
@@ -237,9 +240,9 @@ footer{
 <section id="security">
   <h2>Safety & Security</h2>
   <ul>
-    <li>24/7 CCTV</li>
-    <li>Female Warden</li>
-    <li>Secure Entry</li>
+    <li>24/7 CCTV Surveillance</li>
+    <li>Female Warden Available</li>
+    <li>Secure Entry & Exit</li>
   </ul>
 </section>
 
@@ -247,10 +250,9 @@ footer{
   <h2>Hostel Gallery</h2>
   <div class="gallery">
     <img src="images/hostel-front.jpg" alt="Hostel Front">
-    <img src="images/room1.jpg" alt="Room">
-    <img src="images/room2.jpg" alt="Room">
-    <img src="images/mess.jpg" alt="Mess">
-    <img src="images/common.jpg" alt="Common Area">
+    <img src="images/room1.jpg" alt="Single Room">
+    <img src="images/room2.jpg" alt="Double Room">
+    <img src="images/mess.jpg" alt="Mess Area">
     <img src="images/washroom.jpg" alt="Washroom">
     <img src="images/study-room.jpg" alt="Study Room">
   </div>
@@ -263,15 +265,15 @@ footer{
 </section>
 
 <footer>
-  © 2026 Mahi Hostel | College Project
+  © 2026 Mahi Hostel. All Rights Reserved.
 </footer>
 
 </div>
 
 <script>
 function login(){
-  document.querySelector('.login-box').style.display='none';
-  document.getElementById('hostel-content').style.display='block';
+  document.querySelector('.login-box').style.display = 'none';
+  document.getElementById('hostel-content').style.display = 'block';
 }
 </script>
 
