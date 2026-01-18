@@ -1,119 +1,113 @@
-<?php
-session_start();
 
-/* ---------- DATABASE ---------- */
-$db = new SQLite3("hostel.db");
-$db->exec("
-CREATE TABLE IF NOT EXISTS students (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  student_id TEXT UNIQUE,
-  name TEXT,
-  password TEXT,
-  phone TEXT
-)
-");
-
-$message = "";
-
-/* ---------- REGISTER ---------- */
-if (isset($_POST['register'])) {
-  $stmt = $db->prepare("
-    INSERT INTO students (student_id, name, password, phone)
-    VALUES (:sid, :name, :pass, :phone)
-  ");
-  $stmt->bindValue(':sid', $_POST['student_id']);
-  $stmt->bindValue(':name', $_POST['name']);
-  $stmt->bindValue(':pass', $_POST['password']);
-  $stmt->bindValue(':phone', $_POST['phone']);
-
-  if ($stmt->execute()) {
-    $message = "Registration successful";
-  } else {
-    $message = "Student ID already exists";
-  }
-}
-
-/* ---------- LOGIN ---------- */
-if (isset($_POST['login'])) {
-  $stmt = $db->prepare("
-    SELECT * FROM students
-    WHERE student_id=:sid AND password=:pass
-  ");
-  $stmt->bindValue(':sid', $_POST['student_id']);
-  $stmt->bindValue(':pass', $_POST['password']);
-  $user = $stmt->execute()->fetchArray();
-
-  if ($user) {
-    $_SESSION['student'] = $user['name'];
-  } else {
-    $message = "Invalid login";
-  }
-}
-
-/* ---------- LOGOUT ---------- */
-if (isset($_GET['logout'])) {
-  session_destroy();
-  header("Location: index.php");
-}
-?>
-
+You said:
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mahi Girls Hostel</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+*{
+  box-sizing:border-box;
+  font-family:Segoe UI, Arial, sans-serif;
+}
+
 body{
   margin:0;
-  font-family:Segoe UI,Arial;
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
 
 /* LOGIN */
-.login-box{
-  width:320px;
-  margin:120px auto;
+#login-box{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.login-card{
   background:#fff;
-  padding:25px;
-  border-radius:12px;
-  box-shadow:0 15px 30px rgba(0,0,0,.3);
+  padding:30px;
+  width:320px;
+  border-radius:14px;
+  box-shadow:0 15px 30px rgba(0,0,0,.25);
+  text-align:center;
 }
-input,button{
+
+.login-card h2{
+  color:#3f2a0a;
+  margin-bottom:20px;
+}
+
+.login-card input{
   width:100%;
-  padding:10px;
-  margin:8px 0;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
-button{
+
+.login-card button{
+  width:100%;
+  padding:12px;
   background:#fb923c;
-  color:#fff;
   border:none;
+  color:#fff;
+  font-size:15px;
+  border-radius:8px;
   cursor:pointer;
+}
+
+/* MAIN SITE */
+#main-site{
+  display:none;
 }
 
 /* HEADER */
 header{
   background:#fb923c;
-  padding:20px;
   text-align:center;
-  position:relative;
-}
-header a{
-  position:absolute;
-  right:20px;
-  top:25px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:bold;
+  padding:25px;
 }
 
-/* SECTIONS */
+header h1{
+  margin:0;
+  color:#3f2a0a;
+}
+
+header p{
+  margin:6px 0 0;
+  color:#fff;
+}
+
+/* NAV */
+nav{
+  background:#78350f;
+  text-align:center;
+  padding:12px;
+}
+
+nav a{
+  color:#fff;
+  margin:0 12px;
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* SECTION */
 section{
-  background:#fff;
   max-width:1000px;
+  background:#fff;
   margin:25px auto;
-  padding:20px;
+  padding:25px;
   border-radius:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+h2{
+  margin-top:0;
+  color:#f59e0b;
 }
 
 /* GALLERY */
@@ -122,122 +116,185 @@ section{
   flex-wrap:wrap;
   justify-content:center;
 }
-.gallery img{
-  width:220px;
-  height:150px;
-  object-fit:cover;
-  margin:10px;
-  border-radius:10px;
+
+.gallery-item{
+  position:relative;
+  margin:12px;
 }
 
-/* REGISTER GRID */
-.register-box{
-  max-width:600px;
-  margin:40px auto;
-  background:#fff;
-  padding:25px;
+.gallery-item img{
+  width:240px;
+  height:170px;
+  object-fit:cover;
   border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,.2);
 }
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-.msg{
-  color:red;
+
+.gallery-item span{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.65);
+  color:#fff;
   text-align:center;
+  padding:6px;
+  font-size:14px;
+  border-radius:0 0 12px 12px;
+}
+
+/* FOOTER */
+footer{
+  background:#78350f;
+  color:#fff;
+  text-align:center;
+  padding:15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN PAGE ================= -->
-<?php if (!isset($_SESSION['student']) && !isset($_GET['register'])): ?>
-
-<div class="login-box">
-  <h2>Student Login</h2>
-  <div class="msg"><?= $message ?></div>
-  <form method="post">
-    <input name="student_id" placeholder="Student ID" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button name="login">Login</button>
-  </form>
+<!-- LOGIN PAGE -->
+<div id="login-box">
+  <div class="login-card">
+    <h2>Student Login</h2>
+    <input type="text" id="studentId" placeholder="Student ID">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
 </div>
 
-<!-- ================= REGISTRATION PAGE ================= -->
-<?php elseif (isset($_GET['register'])): ?>
-
-<div class="register-box">
-  <h2>Student Registration</h2>
-  <div class="msg"><?= $message ?></div>
-  <form method="post">
-    <div class="grid">
-      <input name="student_id" placeholder="Student ID" required>
-      <input name="name" placeholder="Full Name" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input name="phone" placeholder="Phone Number" required>
-    </div>
-    <br>
-    <button name="register">Register</button>
-  </form>
-</div>
-
-<!-- ================= HOSTEL INFO PAGE ================= -->
-<?php else: ?>
+<!-- MAIN WEBSITE -->
+<div id="main-site">
 
 <header>
   <h1>Mahi Girls Hostel</h1>
-  <a href="?register=1">Register</a>
+  <p>CIDCO N7, Ch. Sambhaji Nagar</p>
 </header>
 
-<section>
-<h2>About Hostel</h2>
-<p>Safe, hygienic and disciplined environment for girls.</p>
+<nav>
+  <a href="#about">About</a>
+  <a href="#rooms">Rooms</a>
+  <a href="#amenities">Amenities</a>
+  <a href="#fees">Fees</a>
+  <a href="#security">Security</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>About Hostel</h2>
+  <p>
+    Mahi Girls Hostel provides a safe, hygienic and disciplined environment
+    for students with a focus on comfort, security and academic support.
+  </p>
 </section>
 
-<section>
-<h2>Rooms</h2>
-<ul>
-<li>Single Sharing</li>
-<li>Double Sharing</li>
-<li>Attached Washroom</li>
-</ul>
+<section id="rooms">
+  <h2>Rooms</h2>
+  <ul>
+    <li>Single Sharing Rooms</li>
+    <li>Double Sharing Rooms</li>
+    <li>Well Ventilated & Furnished</li>
+    <li>Attached Washrooms</li>
+  </ul>
 </section>
 
-<section>
-<h2>Amenities</h2>
-<ul>
-<li>Mess Facility</li>
-<li>Study Room</li>
-<li>24/7 Water & Electricity</li>
-</ul>
+<section id="amenities">
+  <h2>Amenities</h2>
+  <ul>
+    <li>Mess Facility (Veg Meals)</li>
+    <li>Study Room</li>
+    <li>24/7 Water & Electricity</li>
+    <li>Regular Cleaning</li>
+  </ul>
 </section>
 
-<section>
-<h2>Fees</h2>
-<ul>
-<li>Single: ₹6000</li>
-<li>Double: ₹8000</li>
-<li>Deposit: ₹4000</li>
-</ul>
+<section id="fees">
+  <h2>Fees Structure</h2>
+  <ul>
+    <li>Single Sharing: ₹6000 per month</li>
+    <li>Double Sharing: ₹8000 per month</li>
+    <li>Mess Charges: Included</li>
+    <li>Security Deposit: ₹4000 (Refundable)</li>
+  </ul>
 </section>
 
-<section>
-<h2>Gallery</h2>
-<div class="gallery">
-  <img src="images/hostel1.jpg">
-  <img src="images/room1.jpg">
-  <img src="images/room2.jpg">
-  <img src="images/mess.jpg">
+<section id="security">
+  <h2>Security & Rules</h2>
+  <ul>
+    <li>24/7 CCTV Surveillance</li>
+    <li>Biometric / Register Entry</li>
+    <li>Fixed In-Time for Students</li>
+    <li>No Outside Visitors Allowed</li>
+    <li>Strict Discipline & Safety Rules</li>
+  </ul>
+</section>
+
+<section id="gallery">
+  <h2>Hostel Gallery</h2>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="images/hostel front.jpg">
+      <span>Hostel Front</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel room.jpg">
+      <span>Room 1</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel room2.jpg">
+      <span>Room 2</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel_mess.jpg">
+      <span>Mess Area</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/study room.png">
+      <span>Study Room</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/washroom.jpg">
+      <span>Washroom</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>
+    📍 CIDCO N7, Ch. Sambhaji Nagar<br>
+    📞 +91 7066XX32XX
+  </p>
+</section>
+
+<footer>
+  © 2026 Mahi Girls Hostel. All Rights Reserved.
+</footer>
+
 </div>
-</section>
 
-<section style="text-align:center">
-  <a href="?logout=1">Logout</a>
-</section>
+<script>
+function login(){
+  const id = document.getElementById("studentId").value;
+  const pass = document.getElementById("password").value;
 
-<?php endif; ?>
+  if(id === "student" && pass === "1234"){
+    document.getElementById("login-box").style.display = "none";
+    document.getElementById("main-site").style.display = "block";
+  } else {
+    alert("Invalid Student ID or Password");
+  }
+}
+</script>
 
 </body>
 </html>
