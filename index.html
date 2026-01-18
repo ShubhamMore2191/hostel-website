@@ -1,174 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mahi Girls Hostel</title>
+<?php
+// ---------- DATABASE ----------
+$db = new SQLite3("hostel.db");
+$db->exec("CREATE TABLE IF NOT EXISTS students (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  student_id TEXT UNIQUE,
+  name TEXT,
+  password TEXT,
+  phone TEXT
+)");
 
-<style>
-*{
-  box-sizing:border-box;
-  font-family:Segoe UI, Arial, sans-serif;
+$message = "";
+
+// ---------- REGISTER ----------
+if (isset($_POST['register'])) {
+  $sid = $_POST['student_id'];
+  $name = $_POST['name'];
+  $pass = $_POST['password'];
+  $phone = $_POST['phone'];
+
+  $stmt = $db->prepare("INSERT INTO students (student_id, name, password, phone)
+                         VALUES (:sid, :name, :pass, :phone)");
+  $stmt->bindValue(':sid', $sid);
+  $stmt->bindValue(':name', $name);
+  $stmt->bindValue(':pass', $pass);
+  $stmt->bindValue(':phone', $phone);
+
+  if ($stmt->execute()) {
+    $message = "Registration successful. Please login.";
+  } else {
+    $message = "Student already exists.";
+  }
 }
 
+// ---------- LOGIN ----------
+session_start();
+if (isset($_POST['login'])) {
+  $sid = $_POST['student_id'];
+  $pass = $_POST['password'];
+
+  $stmt = $db->prepare("SELECT * FROM students WHERE student_id=:sid AND password=:pass");
+  $stmt->bindValue(':sid', $sid);
+  $stmt->bindValue(':pass', $pass);
+  $res = $stmt->execute()->fetchArray();
+
+  if ($res) {
+    $_SESSION['student'] = $res['name'];
+  } else {
+    $message = "Invalid login credentials.";
+  }
+}
+
+// ---------- LOGOUT ----------
+if (isset($_GET['logout'])) {
+  session_destroy();
+  header("Location: index.php");
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mahi Girls Hostel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 body{
   margin:0;
+  font-family:Segoe UI,Arial;
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
-
-/* LOGIN */
-#login-box{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.login-card{
+.card{
   background:#fff;
-  padding:30px;
-  width:320px;
-  border-radius:14px;
-  box-shadow:0 15px 30px rgba(0,0,0,.25);
+  width:340px;
+  margin:100px auto;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 15px 30px rgba(0,0,0,.3);
   text-align:center;
 }
-
-.login-card h2{
-  color:#3f2a0a;
-  margin-bottom:20px;
-}
-
-.login-card input{
+input,button{
   width:100%;
   padding:12px;
-  margin-bottom:15px;
+  margin:10px 0;
   border-radius:8px;
   border:1px solid #ccc;
 }
-
-.login-card button{
-  width:100%;
-  padding:12px;
+button{
   background:#fb923c;
-  border:none;
   color:#fff;
-  font-size:15px;
-  border-radius:8px;
+  border:none;
   cursor:pointer;
 }
-
-/* MAIN SITE */
-#main-site{
-  display:none;
-}
-
-/* HEADER */
 header{
   background:#fb923c;
-  text-align:center;
   padding:25px;
+  text-align:center;
 }
-
-header h1{
-  margin:0;
-  color:#3f2a0a;
-}
-
-header p{
-  margin:6px 0 0;
-  color:#fff;
-}
-
-/* NAV */
 nav{
   background:#78350f;
   text-align:center;
   padding:12px;
 }
-
 nav a{
   color:#fff;
-  margin:0 12px;
+  margin:0 10px;
   text-decoration:none;
-  font-weight:500;
 }
-
-/* SECTION */
 section{
   max-width:1000px;
-  background:#fff;
   margin:25px auto;
+  background:#fff;
   padding:25px;
   border-radius:12px;
-  box-shadow:0 10px 20px rgba(0,0,0,.15);
 }
-
-h2{
-  margin-top:0;
-  color:#f59e0b;
-}
-
-/* GALLERY */
-.gallery{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.gallery-item{
-  position:relative;
-  margin:12px;
-}
-
-.gallery-item img{
-  width:240px;
-  height:170px;
-  object-fit:cover;
-  border-radius:12px;
-  box-shadow:0 6px 12px rgba(0,0,0,.2);
-}
-
-.gallery-item span{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.65);
-  color:#fff;
-  text-align:center;
-  padding:6px;
-  font-size:14px;
-  border-radius:0 0 12px 12px;
-}
-
-/* FOOTER */
 footer{
   background:#78350f;
   color:#fff;
   text-align:center;
   padding:15px;
 }
+.msg{
+  color:red;
+  margin-bottom:10px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN PAGE -->
-<div id="login-box">
-  <div class="login-card">
-    <h2>Student Login</h2>
-    <input type="text" id="studentId" placeholder="Student ID">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-  </div>
+<?php if (!isset($_SESSION['student'])): ?>
+
+<div class="card">
+  <h2>Student Login</h2>
+  <div class="msg"><?= $message ?></div>
+
+  <form method="post">
+    <input type="text" name="student_id" placeholder="Student ID" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button name="login">Login</button>
+  </form>
+
+  <hr>
+
+  <h3>New Registration</h3>
+  <form method="post">
+    <input type="text" name="student_id" placeholder="Student ID" required>
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+    <button name="register">Register</button>
+  </form>
 </div>
 
-<!-- MAIN WEBSITE -->
-<div id="main-site">
+<?php else: ?>
 
 <header>
   <h1>Mahi Girls Hostel</h1>
-  <p>CIDCO N7, Ch. Sambhaji Nagar</p>
+  <p>Welcome, <?= $_SESSION['student'] ?></p>
 </header>
 
 <nav>
@@ -176,123 +163,46 @@ footer{
   <a href="#rooms">Rooms</a>
   <a href="#amenities">Amenities</a>
   <a href="#fees">Fees</a>
-  <a href="#security">Security</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#contact">Contact</a>
+  <a href="?logout=1">Logout</a>
 </nav>
 
 <section id="about">
-  <h2>About Hostel</h2>
-  <p>
-    Mahi Girls Hostel provides a safe, hygienic and disciplined environment
-    for students with a focus on comfort, security and academic support.
-  </p>
+<h2>About Hostel</h2>
+<p>Safe, hygienic and disciplined environment for girls.</p>
 </section>
 
 <section id="rooms">
-  <h2>Rooms</h2>
-  <ul>
-    <li>Single Sharing Rooms</li>
-    <li>Double Sharing Rooms</li>
-    <li>Well Ventilated & Furnished</li>
-    <li>Attached Washrooms</li>
-  </ul>
+<h2>Rooms</h2>
+<ul>
+<li>Single Sharing</li>
+<li>Double Sharing</li>
+<li>Attached Washroom</li>
+</ul>
 </section>
 
 <section id="amenities">
-  <h2>Amenities</h2>
-  <ul>
-    <li>Mess Facility (Veg Meals)</li>
-    <li>Study Room</li>
-    <li>24/7 Water & Electricity</li>
-    <li>Regular Cleaning</li>
-  </ul>
+<h2>Amenities</h2>
+<ul>
+<li>Mess Facility</li>
+<li>Study Room</li>
+<li>24/7 Water & Electricity</li>
+</ul>
 </section>
 
 <section id="fees">
-  <h2>Fees Structure</h2>
-  <ul>
-    <li>Single Sharing: ₹6000 per month</li>
-    <li>Double Sharing: ₹8000 per month</li>
-    <li>Mess Charges: Included</li>
-    <li>Security Deposit: ₹4000 (Refundable)</li>
-  </ul>
-</section>
-
-<section id="security">
-  <h2>Security & Rules</h2>
-  <ul>
-    <li>24/7 CCTV Surveillance</li>
-    <li>Biometric / Register Entry</li>
-    <li>Fixed In-Time for Students</li>
-    <li>No Outside Visitors Allowed</li>
-    <li>Strict Discipline & Safety Rules</li>
-  </ul>
-</section>
-
-<section id="gallery">
-  <h2>Hostel Gallery</h2>
-
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="images/hostel front.jpg">
-      <span>Hostel Front</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/hostel room.jpg">
-      <span>Room 1</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/hostel room2.jpg">
-      <span>Room 2</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/hostel_mess.jpg">
-      <span>Mess Area</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/study room.png">
-      <span>Study Room</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/washroom.jpg">
-      <span>Washroom</span>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>
-    📍 CIDCO N7, Ch. Sambhaji Nagar<br>
-    📞 +91 7066XX32XX
-  </p>
+<h2>Fees</h2>
+<ul>
+<li>Single: ₹6000</li>
+<li>Double: ₹8000</li>
+<li>Deposit: ₹4000</li>
+</ul>
 </section>
 
 <footer>
-  © 2026 Mahi Girls Hostel. All Rights Reserved.
+© 2026 Mahi Girls Hostel
 </footer>
 
-</div>
-
-<script>
-function login(){
-  const id = document.getElementById("studentId").value;
-  const pass = document.getElementById("password").value;
-
-  if(id === "student" && pass === "1234"){
-    document.getElementById("login-box").style.display = "none";
-    document.getElementById("main-site").style.display = "block";
-  } else {
-    alert("Invalid Student ID or Password");
-  }
-}
-</script>
+<?php endif; ?>
 
 </body>
 </html>
