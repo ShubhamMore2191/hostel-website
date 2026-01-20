@@ -1,5 +1,3 @@
-
-You said:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,29 +16,29 @@ body{
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
 
-/* LOGIN */
-#login-box{
+/* COMMON AUTH LAYOUT */
+.auth-box{
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-.login-card{
+.auth-card{
   background:#fff;
   padding:30px;
-  width:320px;
+  width:340px;
   border-radius:14px;
   box-shadow:0 15px 30px rgba(0,0,0,.25);
   text-align:center;
 }
 
-.login-card h2{
+.auth-card h2{
   color:#3f2a0a;
   margin-bottom:20px;
 }
 
-.login-card input{
+.auth-card input{
   width:100%;
   padding:12px;
   margin-bottom:15px;
@@ -48,7 +46,7 @@ body{
   border:1px solid #ccc;
 }
 
-.login-card button{
+.auth-card button{
   width:100%;
   padding:12px;
   background:#fb923c;
@@ -57,6 +55,18 @@ body{
   font-size:15px;
   border-radius:8px;
   cursor:pointer;
+}
+
+.auth-card p{
+  margin-top:15px;
+  font-size:14px;
+}
+
+.auth-card a{
+  color:#fb923c;
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:600;
 }
 
 /* MAIN SITE */
@@ -155,13 +165,26 @@ footer{
 
 <body>
 
+<!-- REGISTRATION PAGE -->
+<div id="register-box" class="auth-box">
+  <div class="auth-card">
+    <h2>Student Registration</h2>
+    <input type="text" id="regName" placeholder="Full Name">
+    <input type="text" id="regId" placeholder="Student ID">
+    <input type="password" id="regPass" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <p>Already registered? <a onclick="showLogin()">Login</a></p>
+  </div>
+</div>
+
 <!-- LOGIN PAGE -->
-<div id="login-box">
-  <div class="login-card">
+<div id="login-box" class="auth-box" style="display:none;">
+  <div class="auth-card">
     <h2>Student Login</h2>
-    <input type="text" id="studentId" placeholder="Student ID">
-    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="loginId" placeholder="Student ID">
+    <input type="password" id="loginPass" placeholder="Password">
     <button onclick="login()">Login</button>
+    <p>New student? <a onclick="showRegister()">Register</a></p>
   </div>
 </div>
 
@@ -234,38 +257,7 @@ footer{
 
 <section id="gallery">
   <h2>Hostel Gallery</h2>
-
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="images/hostel front.jpg">
-      <span>Hostel Front</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/hostel room.jpg">
-      <span>Room 1</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/hostel room2.jpg">
-      <span>Room 2</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/hostel_mess.jpg">
-      <span>Mess Area</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/study room.png">
-      <span>Study Room</span>
-    </div>
-
-    <div class="gallery-item">
-      <img src="images/washroom.jpg">
-      <span>Washroom</span>
-    </div>
-  </div>
+  <p>Replace image paths with your actual images.</p>
 </section>
 
 <section id="contact">
@@ -283,14 +275,44 @@ footer{
 </div>
 
 <script>
-function login(){
-  const id = document.getElementById("studentId").value;
-  const pass = document.getElementById("password").value;
+function showLogin(){
+  document.getElementById("register-box").style.display="none";
+  document.getElementById("login-box").style.display="flex";
+}
 
-  if(id === "student" && pass === "1234"){
-    document.getElementById("login-box").style.display = "none";
-    document.getElementById("main-site").style.display = "block";
-  } else {
+function showRegister(){
+  document.getElementById("login-box").style.display="none";
+  document.getElementById("register-box").style.display="flex";
+}
+
+function register(){
+  const name=document.getElementById("regName").value.trim();
+  const id=document.getElementById("regId").value.trim();
+  const pass=document.getElementById("regPass").value.trim();
+
+  if(!name || !id || !pass){
+    alert("All fields are required");
+    return;
+  }
+
+  localStorage.setItem("studentId",id);
+  localStorage.setItem("studentPass",pass);
+
+  alert("Registration successful. Please login.");
+  showLogin();
+}
+
+function login(){
+  const id=document.getElementById("loginId").value;
+  const pass=document.getElementById("loginPass").value;
+
+  const storedId=localStorage.getItem("studentId");
+  const storedPass=localStorage.getItem("studentPass");
+
+  if(id===storedId && pass===storedPass){
+    document.getElementById("login-box").style.display="none";
+    document.getElementById("main-site").style.display="block";
+  }else{
     alert("Invalid Student ID or Password");
   }
 }
