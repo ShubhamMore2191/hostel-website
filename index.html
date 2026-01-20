@@ -57,6 +57,7 @@ header{
   justify-content:center;
   align-items:center;
   text-align:center;
+  position:relative;
 }
 header h1{
   font-size:48px;
@@ -72,6 +73,21 @@ header p{
   border-radius:6px;
 }
 
+/* LOGOUT BUTTON */
+#logoutBtn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:#fb923c;
+  color:#fff;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* NAV */
 nav{
   background:#78350f;
   padding:14px;
@@ -215,6 +231,7 @@ footer{
 <header>
   <h1>Mahi Girls Hostel</h1>
   <p>CIDCO N7, Chhatrapati Sambhaji Nagar</p>
+  <button id="logoutBtn" onclick="logout()">Logout</button>
 </header>
 
 <nav>
@@ -324,9 +341,17 @@ footer{
 </div>
 
 <script>
+const registerBox=document.getElementById("register-box");
+const loginBox=document.getElementById("login-box");
+const mainSite=document.getElementById("main-site");
+const regId=document.getElementById("regId");
+const regPass=document.getElementById("regPass");
+const loginId=document.getElementById("loginId");
+const loginPass=document.getElementById("loginPass");
+
 function showLogin(){
-  document.getElementById("register-box").style.display="none";
-  document.getElementById("login-box").style.display="flex";
+  registerBox.style.display="none";
+  loginBox.style.display="flex";
 }
 function register(){
   const id=regId.value.trim(),pass=regPass.value.trim();
@@ -339,9 +364,14 @@ function register(){
 function login(){
   if(loginId.value===localStorage.getItem("studentId") &&
      loginPass.value===localStorage.getItem("studentPass")){
-    login-box.style.display="none";
-    main-site.style.display="block";
+    loginBox.style.display="none";
+    mainSite.style.display="block";
   }else alert("Invalid credentials");
+}
+function logout(){
+  localStorage.clear();
+  mainSite.style.display="none";
+  loginBox.style.display="flex";
 }
 </script>
 
