@@ -16,7 +16,7 @@ body{
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
 
-/* AUTH */
+/* AUTH PAGES */
 .auth-box{
   min-height:100vh;
   display:flex;
@@ -169,6 +169,7 @@ th{
   height:170px;
   object-fit:cover;
   border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,.2);
 }
 
 .gallery-item span{
@@ -176,10 +177,11 @@ th{
   bottom:0;
   left:0;
   right:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,.65);
   color:#fff;
   text-align:center;
   padding:6px;
+  font-size:14px;
   border-radius:0 0 12px 12px;
 }
 
@@ -231,26 +233,21 @@ footer{
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- HOME PAGE -->
 <section id="home">
   <h2>Hostel Overview</h2>
-
   <div class="info-grid">
     <div class="info-card">
       <h3>Total Capacity</h3>
       <p><strong>10,000 Students</strong></p>
     </div>
-
     <div class="info-card">
       <h3>Total Rooms</h3>
       <p><strong>200 Rooms</strong></p>
     </div>
-
     <div class="info-card">
       <h3>Security</h3>
       <p>24/7 CCTV & Warden</p>
     </div>
-
     <div class="info-card">
       <h3>Facilities</h3>
       <p>Mess, Study Room, Wi-Fi</p>
@@ -258,10 +255,8 @@ footer{
   </div>
 </section>
 
-<!-- ROOMS PAGE -->
 <section id="rooms">
   <h2>Rooms & Availability</h2>
-
   <table>
     <tr>
       <th>Room Type</th>
@@ -282,13 +277,8 @@ footer{
       <td>60</td>
     </tr>
   </table>
-
-  <p style="margin-top:15px;">
-    * Availability changes monthly based on admissions and vacating students.
-  </p>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery">
   <h2>Hostel Gallery</h2>
   <div class="gallery">
@@ -298,16 +288,27 @@ footer{
     </div>
     <div class="gallery-item">
       <img src="images/hostel room.jpg">
-      <span>Room</span>
+      <span>Room 1</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/hostel room2.jpg">
+      <span>Room 2</span>
     </div>
     <div class="gallery-item">
       <img src="images/hostel_mess.jpg">
-      <span>Mess</span>
+      <span>Mess Area</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/study room.png">
+      <span>Study Room</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/washroom.jpg">
+      <span>Washroom</span>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
   <p>
@@ -317,32 +318,32 @@ footer{
 </section>
 
 <footer>
-  © 2026 Mahi Girls Hostel
+  © 2026 Mahi Girls Hostel. All Rights Reserved.
 </footer>
 
 </div>
 
 <script>
 function showLogin(){
-  register-box.style.display="none";
-  login-box.style.display="flex";
+  document.getElementById("register-box").style.display="none";
+  document.getElementById("login-box").style.display="flex";
 }
 
 function register(){
-  localStorage.setItem("id",regId.value);
-  localStorage.setItem("pass",regPass.value);
+  localStorage.setItem("id", regId.value);
+  localStorage.setItem("pass", regPass.value);
   alert("Registration successful");
   showLogin();
 }
 
 function login(){
   if(
-    loginId.value===localStorage.getItem("id") &&
-    loginPass.value===localStorage.getItem("pass")
+    loginId.value === localStorage.getItem("id") &&
+    loginPass.value === localStorage.getItem("pass")
   ){
-    login-box.style.display="none";
-    main-site.style.display="block";
-  }else{
+    document.getElementById("login-box").style.display="none";
+    document.getElementById("main-site").style.display="block";
+  } else {
     alert("Invalid credentials");
   }
 }
