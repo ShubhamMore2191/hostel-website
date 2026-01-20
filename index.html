@@ -146,7 +146,7 @@ footer{
     <h2>Student Registration</h2>
     <input id="regId" placeholder="Student ID">
     <input id="regPass" type="password" placeholder="Password">
-    <button onclick="register()">Register</button>
+    <button onclick="registerUser()">Register</button>
     <p>Already registered? <a onclick="showLogin()">Login</a></p>
   </div>
 </div>
@@ -157,7 +157,7 @@ footer{
     <h2>Student Login</h2>
     <input id="loginId" placeholder="Student ID">
     <input id="loginPass" type="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+    <button onclick="loginUser()">Login</button>
   </div>
 </div>
 
@@ -181,7 +181,7 @@ footer{
     <a href="#rooms">Rooms</a>
     <a href="#amenities">Amenities</a>
     <a href="#contact">Contact</a>
-    <a class="logout" onclick="logout()">Logout</a>
+    <a class="logout" onclick="logoutUser()">Logout</a>
   </div>
 </header>
 
@@ -213,36 +213,57 @@ of providing a safe, disciplined, and comfortable living environment for female 
 </div>
 
 <script>
-function showLogin(){
-  register.style.display="none";
-  login.style.display="flex";
+// Get HTML elements
+const registerDiv = document.getElementById("register");
+const loginDiv = document.getElementById("login");
+const siteDiv = document.getElementById("site");
+const menuDiv = document.getElementById("menu");
+
+const regId = document.getElementById("regId");
+const regPass = document.getElementById("regPass");
+const loginId = document.getElementById("loginId");
+const loginPass = document.getElementById("loginPass");
+
+// Show login form
+function showLogin() {
+  registerDiv.style.display = "none";
+  loginDiv.style.display = "flex";
 }
 
-function register(){
-  if(!regId.value||!regPass.value){alert("Fill all fields");return;}
-  localStorage.setItem("id",regId.value);
-  localStorage.setItem("pass",regPass.value);
+// Register
+function registerUser() {
+  if (!regId.value || !regPass.value) {
+    alert("Fill all fields");
+    return;
+  }
+  localStorage.setItem("id", regId.value);
+  localStorage.setItem("pass", regPass.value);
   alert("Registration successful");
   showLogin();
 }
 
-function login(){
-  if(loginId.value===localStorage.getItem("id") &&
-     loginPass.value===localStorage.getItem("pass")){
-    login.style.display="none";
-    site.style.display="block";
-  }else alert("Invalid login");
+// Login
+function loginUser() {
+  if (
+    loginId.value === localStorage.getItem("id") &&
+    loginPass.value === localStorage.getItem("pass")
+  ) {
+    loginDiv.style.display = "none";
+    siteDiv.style.display = "block";
+  } else alert("Invalid login");
 }
 
-function toggleMenu(){
-  menu.style.display = menu.style.display==="block" ? "none" : "block";
+// Toggle menu
+function toggleMenu() {
+  menuDiv.style.display = menuDiv.style.display === "block" ? "none" : "block";
 }
 
-function logout(){
+// Logout
+function logoutUser() {
   localStorage.clear();
-  site.style.display="none";
-  login.style.display="flex";
-  menu.style.display="none";
+  siteDiv.style.display = "none";
+  loginDiv.style.display = "flex";
+  menuDiv.style.display = "none";
 }
 </script>
 
