@@ -16,7 +16,7 @@ body{
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
 
-/* COMMON AUTH LAYOUT */
+/* AUTH PAGES */
 .auth-box{
   min-height:100vh;
   display:flex;
@@ -65,8 +65,8 @@ body{
 .auth-card a{
   color:#fb923c;
   cursor:pointer;
-  text-decoration:none;
   font-weight:600;
+  text-decoration:none;
 }
 
 /* MAIN SITE */
@@ -257,7 +257,38 @@ footer{
 
 <section id="gallery">
   <h2>Hostel Gallery</h2>
-  <p>Replace image paths with your actual images.</p>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="images/hostel front.jpg" alt="Hostel Front">
+      <span>Hostel Front</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel room.jpg" alt="Room 1">
+      <span>Room 1</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel room2.jpg" alt="Room 2">
+      <span>Room 2</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hostel_mess.jpg" alt="Mess Area">
+      <span>Mess Area</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/study room.png" alt="Study Room">
+      <span>Study Room</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/washroom.jpg" alt="Washroom">
+      <span>Washroom</span>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
@@ -286,11 +317,10 @@ function showRegister(){
 }
 
 function register(){
-  const name=document.getElementById("regName").value.trim();
   const id=document.getElementById("regId").value.trim();
   const pass=document.getElementById("regPass").value.trim();
 
-  if(!name || !id || !pass){
+  if(!id || !pass){
     alert("All fields are required");
     return;
   }
@@ -306,10 +336,10 @@ function login(){
   const id=document.getElementById("loginId").value;
   const pass=document.getElementById("loginPass").value;
 
-  const storedId=localStorage.getItem("studentId");
-  const storedPass=localStorage.getItem("studentPass");
-
-  if(id===storedId && pass===storedPass){
+  if(
+    id===localStorage.getItem("studentId") &&
+    pass===localStorage.getItem("studentPass")
+  ){
     document.getElementById("login-box").style.display="none";
     document.getElementById("main-site").style.display="block";
   }else{
