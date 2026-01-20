@@ -9,7 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
 body{background:#fff}
 
-/* ================= AUTH SCREENS ================= */
+/* AUTH */
 .auth{
   min-height:100vh;
   display:flex;
@@ -20,12 +20,11 @@ body{background:#fff}
 .auth-card{
   background:#fff;
   padding:30px;
-  width:340px;
+  width:360px;
   border-radius:14px;
   box-shadow:0 15px 30px rgba(0,0,0,.25);
-  text-align:center;
 }
-.auth-card h2{margin-bottom:20px;color:#78350f}
+.auth-card h2{text-align:center;margin-bottom:20px;color:#78350f}
 .auth-card input{
   width:100%;
   padding:12px;
@@ -43,20 +42,16 @@ body{background:#fff}
   border-radius:8px;
   cursor:pointer;
 }
-.auth-card a{
-  color:#fb923c;
-  font-weight:600;
-  cursor:pointer;
-  text-decoration:none;
-}
+.auth-card p{text-align:center}
+.auth-card a{color:#fb923c;font-weight:600;cursor:pointer}
 
-/* ================= MAIN SITE ================= */
+/* SITE */
 #site{display:none}
 
 header{
   height:70vh;
   background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
     url('images/hostel-back.png') center/cover no-repeat;
   color:#fff;
   display:flex;
@@ -65,15 +60,8 @@ header{
   align-items:center;
   text-align:center;
 }
-header h1{
-  font-size:48px;
-  padding:12px 24px;
-  border-radius:10px;
-}
-header p{
-  font-size:18px;
-  margin-top:10px;
-}
+header h1{font-size:48px}
+header p{font-size:18px;margin-top:10px}
 
 nav{
   background:#78350f;
@@ -84,7 +72,7 @@ nav{
 }
 nav a{
   color:#fff;
-  margin:0 15px;
+  margin:0 14px;
   text-decoration:none;
   font-weight:500;
 }
@@ -97,47 +85,38 @@ section{
 section h2{
   text-align:center;
   color:#f59e0b;
-  margin-bottom:30px;
+  margin-bottom:25px;
   font-size:32px;
 }
-
-.about p{
-  font-size:18px;
-  line-height:1.7;
-  text-align:justify;
+section h3{
+  margin-top:25px;
+  color:#78350f;
 }
+
+.about p{font-size:17px;line-height:1.7;margin-top:12px;text-align:justify}
 
 /* STATS */
 .stats{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
+  gap:20px;
 }
 .stat{
   background:#fff7ed;
-  padding:25px;
+  padding:20px;
   border-radius:14px;
-  box-shadow:0 8px 16px rgba(0,0,0,.1);
   text-align:center;
 }
-.stat h3{font-size:26px;color:#78350f}
+.stat h4{font-size:22px;color:#78350f}
 
 /* TABLE */
-table{width:100%;border-collapse:collapse}
-th,td{padding:14px;border:1px solid #ddd;text-align:center}
+table{width:100%;border-collapse:collapse;margin-top:20px}
+th,td{padding:12px;border:1px solid #ddd;text-align:center}
 th{background:#fde68a}
 
-/* AMENITIES */
-.amenities{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-.amenity{
-  background:#fff7ed;
-  padding:18px;
-  border-radius:12px;
-}
+/* LISTS */
+ul{margin-top:15px;padding-left:20px}
+li{margin-bottom:8px}
 
 /* GALLERY */
 .gallery{
@@ -151,7 +130,6 @@ th{background:#fde68a}
   object-fit:cover;
   border-radius:12px;
   margin:10px;
-  box-shadow:0 6px 12px rgba(0,0,0,.2);
 }
 
 footer{
@@ -165,7 +143,7 @@ footer{
 
 <body>
 
-<!-- ================= REGISTER ================= -->
+<!-- REGISTER -->
 <div id="register" class="auth">
   <div class="auth-card">
     <h2>Student Registration</h2>
@@ -176,17 +154,17 @@ footer{
   </div>
 </div>
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 <div id="login" class="auth" style="display:none">
   <div class="auth-card">
     <h2>Student Login</h2>
     <input id="loginId" placeholder="Student ID">
-    <input id="loginPass" type="password" placeholder="Password">
+    <input id="loginPass" type="password">
     <button onclick="login()">Login</button>
   </div>
 </div>
 
-<!-- ================= SITE ================= -->
+<!-- MAIN SITE -->
 <div id="site">
 
 <header>
@@ -196,73 +174,95 @@ footer{
 
 <nav>
   <a href="#about">About</a>
-  <a href="#stats">Overview</a>
+  <a href="#glance">Overview</a>
   <a href="#rooms">Rooms</a>
   <a href="#amenities">Amenities</a>
-  <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <section id="about" class="about">
 <h2>About Our Hostel</h2>
-<p>
-Mahi Girls Hostel is a dedicated residential facility established to provide a safe,
-disciplined, and comfortable living environment for female students. The hostel supports
-academic focus, personal growth, and independent living through structured routines,
-secure premises, hygienic facilities, and a study-friendly atmosphere.
-</p>
+
+<p>Mahi Girls Hostel is a dedicated residential facility established with the primary objective of providing a safe, disciplined, and comfortable living environment for female students...</p>
+
+<h3>Safe & Secure Living Environment</h3>
+<p>The safety of students is our top priority. The hostel follows strict security protocols including controlled entry and exit, warden supervision, and continuous monitoring...</p>
+
+<h3>Comfortable Accommodation</h3>
+<p>Mahi Girls Hostel offers well-ventilated, spacious, and neatly maintained rooms with single, double, triple, and four-sharing options...</p>
+
+<h3>Academic-Friendly Atmosphere</h3>
+<p>Understanding the academic needs of students, the hostel maintains a quiet and study-friendly environment...</p>
+
+<h3>Hygiene & Daily Facilities</h3>
+<p>The hostel ensures high standards of cleanliness through regular housekeeping...</p>
+
+<h3>Mess & Nutrition</h3>
+<p>A hygienic vegetarian mess facility is available for students...</p>
+
+<h3>Supportive & Disciplined Lifestyle</h3>
+<p>Mahi Girls Hostel encourages a disciplined lifestyle...</p>
+
+<h3>Location & Accessibility</h3>
+<p>The hostel is located in a well-connected area...</p>
+
+<h3>Our Mission</h3>
+<p>Our mission is to provide a secure, comfortable, and supportive residential space...</p>
 </section>
 
-<section id="stats">
+<section id="glance">
 <h2>Hostel At a Glance</h2>
 <div class="stats">
-  <div class="stat"><h3>10,000+</h3><p>Student Capacity</p></div>
-  <div class="stat"><h3>200</h3><p>Total Rooms</p></div>
-  <div class="stat"><h3>Single–Four</h3><p>Sharing Options</p></div>
-  <div class="stat"><h3>24/7</h3><p>Security & CCTV</p></div>
+<div class="stat"><h4>10,000+</h4><p>Student Capacity</p></div>
+<div class="stat"><h4>200</h4><p>Total Rooms</p></div>
+<div class="stat"><h4>Single–Four</h4><p>Sharing Options</p></div>
+<div class="stat"><h4>24/7</h4><p>Security & Surveillance</p></div>
+<div class="stat"><h4>Veg Mess</h4><p>Nutritious Meals</p></div>
+<div class="stat"><h4>Study Friendly</h4><p>Peaceful Atmosphere</p></div>
 </div>
 </section>
 
 <section id="rooms">
 <h2>Rooms & Pricing</h2>
 <table>
-<tr><th>Type</th><th>Sharing</th><th>Fee</th><th>Available</th></tr>
+<tr><th>Room Type</th><th>Sharing</th><th>Monthly Charge</th><th>Available</th></tr>
 <tr><td>Single</td><td>1</td><td>₹4000</td><td>40</td></tr>
 <tr><td>Double</td><td>2</td><td>₹2500</td><td>60</td></tr>
 <tr><td>Triple</td><td>3</td><td>₹2000</td><td>50</td></tr>
 <tr><td>Four</td><td>4</td><td>₹1800</td><td>50</td></tr>
 </table>
+
+<h3>Room Facilities</h3>
+<ul>
+<li>Well-ventilated rooms</li>
+<li>Study table and chair</li>
+<li>Comfortable beds</li>
+<li>Clean washrooms</li>
+<li>Regular housekeeping</li>
+</ul>
 </section>
 
 <section id="amenities">
 <h2>Amenities</h2>
-<div class="amenities">
-  <div class="amenity">Vegetarian Mess</div>
-  <div class="amenity">Study Room</div>
-  <div class="amenity">Wi-Fi</div>
-  <div class="amenity">24/7 Water & Power</div>
-  <div class="amenity">Housekeeping</div>
-  <div class="amenity">CCTV & Warden</div>
-</div>
-</section>
-
-<section id="gallery">
-<h2>Gallery</h2>
-<div class="gallery">
-<img src="images/hostel front.jpg">
-<img src="images/hostel room.jpg">
-<img src="images/hostel room2.jpg">
-<img src="images/hostel_mess.jpg">
-<img src="images/study room.png">
-<img src="images/washroom.jpg">
-</div>
+<ul>
+<li>Hygienic Vegetarian Mess</li>
+<li>Study Room</li>
+<li>High-Speed Wi-Fi</li>
+<li>24/7 Water & Power</li>
+<li>Warden Supervision</li>
+<li>CCTV Security</li>
+<li>First Aid Support</li>
+<li>Fire Safety Measures</li>
+</ul>
 </section>
 
 <section id="contact">
 <h2>Contact Us</h2>
 <p style="text-align:center">
-📍 CIDCO N7, Ch. Sambhaji Nagar<br>
+Mahi Girls Hostel<br>
+📍 CIDCO N7, Chhatrapati Sambhaji Nagar<br>
 📞 +91 7066XX32XX<br>
+📱 +91 7066XX45XX<br>
 📧 mahigirlshostel@gmail.com
 </p>
 </section>
@@ -272,26 +272,22 @@ secure premises, hygienic facilities, and a study-friendly atmosphere.
 
 <script>
 function showLogin(){
-  document.getElementById("register").style.display="none";
-  document.getElementById("login").style.display="flex";
+  register.style.display="none";
+  login.style.display="flex";
 }
-
 function register(){
-  if(!regId.value || !regPass.value){
-    alert("Fill all fields"); return;
-  }
+  if(!regId.value||!regPass.value){alert("Fill all fields");return;}
   localStorage.setItem("id",regId.value);
   localStorage.setItem("pass",regPass.value);
-  alert("Registered successfully");
+  alert("Registration successful");
   showLogin();
 }
-
 function login(){
   if(loginId.value===localStorage.getItem("id") &&
      loginPass.value===localStorage.getItem("pass")){
-    document.getElementById("login").style.display="none";
-    document.getElementById("site").style.display="block";
-  }else alert("Invalid credentials");
+    login.style.display="none";
+    site.style.display="block";
+  }else alert("Invalid login");
 }
 </script>
 
