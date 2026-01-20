@@ -20,7 +20,7 @@ body{background:#fff}
 .auth-card{
   background:#fff;
   padding:30px;
-  width:340px;
+  width:360px;
   border-radius:14px;
   box-shadow:0 15px 30px rgba(0,0,0,.25);
   text-align:center;
@@ -43,12 +43,7 @@ body{background:#fff}
   border-radius:8px;
   cursor:pointer;
 }
-.auth-card a{
-  color:#fb923c;
-  font-weight:600;
-  cursor:pointer;
-  text-decoration:none;
-}
+.auth-card a{color:#fb923c;font-weight:600;cursor:pointer;text-decoration:none}
 
 /* SITE */
 #main-site{display:none}
@@ -65,14 +60,14 @@ header{
 }
 header h1{
   font-size:48px;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.6);
   padding:10px 20px;
   border-radius:8px;
 }
 header p{
   margin-top:10px;
   font-size:18px;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.6);
   padding:6px 14px;
   border-radius:6px;
 }
@@ -83,6 +78,7 @@ nav{
   text-align:center;
   position:sticky;
   top:0;
+  z-index:100;
 }
 nav a{
   color:#fff;
@@ -103,10 +99,10 @@ section h2{
   font-size:32px;
 }
 
-.about p{
-  text-align:center;
-  font-size:18px;
-  line-height:1.6;
+.about p, .about h3{
+  margin-bottom:18px;
+  line-height:1.7;
+  font-size:17px;
 }
 
 .stats{
@@ -133,6 +129,11 @@ th,td{
   text-align:center;
 }
 th{background:#fde68a}
+
+.note{
+  margin-top:20px;
+  line-height:1.6;
+}
 
 .amenities{
   display:grid;
@@ -174,6 +175,8 @@ th{background:#fde68a}
   border-radius:0 0 12px 12px;
 }
 
+.contact p{line-height:1.8;font-size:16px}
+
 footer{
   background:#78350f;
   color:#fff;
@@ -211,12 +214,12 @@ footer{
 
 <header>
   <h1>Mahi Girls Hostel</h1>
-  <p>CIDCO N7, Ch. Sambhaji Nagar</p>
+  <p>CIDCO N7, Chhatrapati Sambhaji Nagar</p>
 </header>
 
 <nav>
   <a href="#about">About</a>
-  <a href="#stats">Statistics</a>
+  <a href="#stats">At a Glance</a>
   <a href="#rooms">Rooms</a>
   <a href="#amenities">Amenities</a>
   <a href="#gallery">Gallery</a>
@@ -224,120 +227,121 @@ footer{
 </nav>
 
 <section id="about" class="about">
-  <h2>About Our Hostel</h2>
-  <p>
-    Mahi Girls Hostel provides a secure, hygienic and disciplined environment
-    focused on comfort, safety and academic growth.
-  </p>
+<h2>About Our Hostel</h2>
+
+<p><b>Mahi Girls Hostel</b> is a dedicated residential facility established to provide a safe, disciplined, and comfortable living environment for female students. The hostel supports students not only with accommodation but also with an atmosphere that encourages academic focus, personal growth, and independent living.</p>
+
+<h3>Safe & Secure Living Environment</h3>
+<p>The hostel follows strict security protocols including controlled entry and exit, warden supervision, and continuous monitoring to ensure a secure environment at all times.</p>
+
+<h3>Comfortable Accommodation</h3>
+<p>Well-ventilated, spacious rooms with single, double, triple, and four sharing options are available. Regular cleaning ensures hygienic living conditions.</p>
+
+<h3>Academic-Friendly Atmosphere</h3>
+<p>Dedicated study areas and disciplined routines help students focus on academics without distractions.</p>
+
+<h3>Mess & Nutrition</h3>
+<p>A hygienic vegetarian mess provides nutritious meals with fixed timings.</p>
+
+<h3>Our Mission</h3>
+<p>To create a secure and supportive residential space where students can grow academically and personally.</p>
 </section>
 
 <section id="stats">
-  <h2>Hostel At a Glance</h2>
-  <div class="stats">
-    <div class="stat"><h3>10,000+</h3><p>Student Capacity</p></div>
-    <div class="stat"><h3>200</h3><p>Total Rooms</p></div>
-    <div class="stat"><h3>24/7</h3><p>Security</p></div>
-    <div class="stat"><h3>100%</h3><p>Safe for Girls</p></div>
-  </div>
+<h2>Hostel At a Glance</h2>
+<div class="stats">
+<div class="stat"><h3>10,000+</h3><p>Student Capacity</p></div>
+<div class="stat"><h3>200</h3><p>Total Rooms</p></div>
+<div class="stat"><h3>Single & Double</h3><p>Sharing Options</p></div>
+<div class="stat"><h3>24/7</h3><p>Security</p></div>
+<div class="stat"><h3>100%</h3><p>Safe for Girls</p></div>
+<div class="stat"><h3>Veg Mess</h3><p>Nutritious Meals</p></div>
+</div>
 </section>
 
 <section id="rooms">
-  <h2>Rooms & Pricing</h2>
-  <table>
-    <tr>
-      <th>Room Type</th>
-      <th>Sharing</th>
-      <th>Monthly Charge</th>
-      <th>Available</th>
-    </tr>
-    <tr>
-      <td>Single Sharing</td>
-      <td>1 Student</td>
-      <td>₹4000</td>
-      <td>40 Rooms</td>
-    </tr>
-    <tr>
-      <td>Double Sharing</td>
-      <td>2 Students</td>
-      <td>₹2500</td>
-      <td>60 Rooms</td>
-    </tr>
-  </table>
+<h2>Rooms & Pricing</h2>
+<table>
+<tr><th>Room Type</th><th>Sharing</th><th>Monthly Charge</th><th>Available</th></tr>
+<tr><td>Single Sharing</td><td>1 Student</td><td>₹4000</td><td>40 Rooms</td></tr>
+<tr><td>Double Sharing</td><td>2 Students</td><td>₹2500</td><td>60 Rooms</td></tr>
+<tr><td>Triple Sharing</td><td>3 Students</td><td>₹2000</td><td>50 Rooms</td></tr>
+<tr><td>Four Sharing</td><td>4 Students</td><td>₹1800</td><td>50 Rooms</td></tr>
+</table>
+
+<div class="note">
+<p><b>Important Notes:</b></p>
+<ul>
+<li>Charges are per student</li>
+<li>Water, electricity & mess included</li>
+<li>Rooms allotted on first-come basis</li>
+</ul>
+</div>
 </section>
 
 <section id="amenities">
-  <h2>Amenities</h2>
-  <div class="amenities">
-    <div class="amenity">Mess Facility (Veg)</div>
-    <div class="amenity">Study Room</div>
-    <div class="amenity">Wi-Fi</div>
-    <div class="amenity">24/7 Water & Electricity</div>
-    <div class="amenity">Regular Cleaning</div>
-    <div class="amenity">Warden Supervision</div>
-  </div>
+<h2>Amenities</h2>
+<div class="amenities">
+<div class="amenity">Hygienic Vegetarian Mess</div>
+<div class="amenity">Dedicated Study Room</div>
+<div class="amenity">High-Speed Wi-Fi</div>
+<div class="amenity">24/7 Water & Power</div>
+<div class="amenity">Regular Housekeeping</div>
+<div class="amenity">Warden Supervision</div>
+<div class="amenity">CCTV Security</div>
+<div class="amenity">RO Drinking Water</div>
+<div class="amenity">First Aid Support</div>
+</div>
 </section>
 
 <section id="gallery">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <div class="gallery-item"><img src="images/hostel front.jpg"><span>Hostel Front</span></div>
-    <div class="gallery-item"><img src="images/hostel room.jpg"><span>Room 1</span></div>
-    <div class="gallery-item"><img src="images/hostel room2.jpg"><span>Room 2</span></div>
-    <div class="gallery-item"><img src="images/hostel_mess.jpg"><span>Mess Area</span></div>
-    <div class="gallery-item"><img src="images/study room.png"><span>Study Room</span></div>
-    <div class="gallery-item"><img src="images/washroom.jpg"><span>Washroom</span></div>
-  </div>
+<h2>Gallery</h2>
+<div class="gallery">
+<div class="gallery-item"><img src="images/hostel front.jpg"><span>Hostel Front</span></div>
+<div class="gallery-item"><img src="images/hostel room.jpg"><span>Room</span></div>
+<div class="gallery-item"><img src="images/hostel room2.jpg"><span>Room</span></div>
+<div class="gallery-item"><img src="images/hostel_mess.jpg"><span>Mess</span></div>
+<div class="gallery-item"><img src="images/study room.png"><span>Study Room</span></div>
+<div class="gallery-item"><img src="images/washroom.jpg"><span>Washroom</span></div>
+</div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p style="text-align:center">
-    📍 CIDCO N7, Ch. Sambhaji Nagar<br>
-    📞 +91 7066XX32XX
-  </p>
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+<p style="text-align:center">
+<b>Mahi Girls Hostel</b><br>
+📍 CIDCO N7, Chhatrapati Sambhaji Nagar, Maharashtra<br>
+📞 +91 7066XX32XX | +91 7066XX45XX<br>
+📧 mahigirlshostel@gmail.com<br>
+🕘 Mon–Sat: 9 AM – 7 PM
+</p>
 </section>
 
 <footer>
-  © 2026 Mahi Girls Hostel. All Rights Reserved.
+© 2026 Mahi Girls Hostel. All Rights Reserved.
 </footer>
 
 </div>
 
 <script>
 function showLogin(){
-  document.getElementById("register-box").style.display = "none";
-  document.getElementById("login-box").style.display = "flex";
+  document.getElementById("register-box").style.display="none";
+  document.getElementById("login-box").style.display="flex";
 }
-
 function register(){
-  const id = document.getElementById("regId").value.trim();
-  const pass = document.getElementById("regPass").value.trim();
-
-  if(id === "" || pass === ""){
-    alert("Please fill all fields");
-    return;
-  }
-
-  localStorage.setItem("studentId", id);
-  localStorage.setItem("studentPass", pass);
-
-  alert("Registration successful. Please login.");
+  const id=regId.value.trim(),pass=regPass.value.trim();
+  if(!id||!pass){alert("Fill all fields");return;}
+  localStorage.setItem("studentId",id);
+  localStorage.setItem("studentPass",pass);
+  alert("Registered successfully");
   showLogin();
 }
-
 function login(){
-  const id = document.getElementById("loginId").value.trim();
-  const pass = document.getElementById("loginPass").value.trim();
-
-  const savedId = localStorage.getItem("studentId");
-  const savedPass = localStorage.getItem("studentPass");
-
-  if(id === savedId && pass === savedPass){
-    document.getElementById("login-box").style.display = "none";
-    document.getElementById("main-site").style.display = "block";
-  } else {
-    alert("Invalid Student ID or Password");
-  }
+  if(loginId.value===localStorage.getItem("studentId") &&
+     loginPass.value===localStorage.getItem("studentPass")){
+    login-box.style.display="none";
+    main-site.style.display="block";
+  }else alert("Invalid credentials");
 }
 </script>
 
