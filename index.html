@@ -10,7 +10,7 @@
 body{background:#fff}
 
 /* AUTH */
-.auth{
+.auth-box{
   min-height:100vh;
   display:flex;
   justify-content:center;
@@ -23,8 +23,9 @@ body{background:#fff}
   width:360px;
   border-radius:14px;
   box-shadow:0 15px 30px rgba(0,0,0,.25);
+  text-align:center;
 }
-.auth-card h2{text-align:center;margin-bottom:20px;color:#78350f}
+.auth-card h2{margin-bottom:20px;color:#78350f}
 .auth-card input{
   width:100%;
   padding:12px;
@@ -42,79 +43,50 @@ body{background:#fff}
   border-radius:8px;
   cursor:pointer;
 }
-.auth-card p{text-align:center}
-.auth-card a{color:#fb923c;font-weight:600;cursor:pointer}
+.auth-card a{color:#fb923c;font-weight:600;cursor:pointer;text-decoration:none}
 
-/* MAIN SITE */
-#site{display:none}
+/* SITE */
+#main-site{display:none}
 
-/* HEADER */
 header{
+  background:url('images/hostel front.jpg') center/cover no-repeat;
   height:70vh;
-  background:
-    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
-    url('images/hostel-back.png') center/cover no-repeat;
   color:#fff;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  position:relative;
 }
-header h1{font-size:48px}
-header p{margin-top:10px}
-
-/* HAMBURGER MENU */
-.menu-btn{
-  position:absolute;
-  top:20px;
-  right:20px;
-  width:30px;
-  cursor:pointer;
-}
-.menu-btn div{
-  height:4px;
-  background:#fff;
-  margin:5px 0;
-}
-
-.menu{
-  position:absolute;
-  top:65px;
-  right:20px;
-  background:#fff;
-  width:180px;
+header h1{
+  font-size:48px;
+  background:rgba(0,0,0,.6);
+  padding:10px 20px;
   border-radius:8px;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-  display:none;
-  z-index:10;
 }
-.menu a{
-  display:block;
-  padding:12px;
-  text-decoration:none;
-  color:#333;
-  border-bottom:1px solid #eee;
+header p{
+  margin-top:10px;
+  font-size:18px;
+  background:rgba(0,0,0,.6);
+  padding:6px 14px;
+  border-radius:6px;
 }
-.menu a:hover{background:#fde68a}
-.menu a.logout{color:red;font-weight:600}
 
-/* NAV */
 nav{
   background:#78350f;
   padding:14px;
   text-align:center;
   position:sticky;
   top:0;
+  z-index:100;
 }
 nav a{
   color:#fff;
-  margin:0 14px;
+  margin:0 15px;
   text-decoration:none;
   font-weight:500;
 }
 
-/* SECTIONS */
 section{
   max-width:1100px;
   margin:60px auto;
@@ -123,12 +95,88 @@ section{
 section h2{
   text-align:center;
   color:#f59e0b;
-  margin-bottom:25px;
+  margin-bottom:30px;
   font-size:32px;
 }
-.about p{line-height:1.7;margin-top:12px;text-align:justify}
 
-/* FOOTER */
+.about p, .about h3{
+  margin-bottom:18px;
+  line-height:1.7;
+  font-size:17px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+.stat{
+  background:#fff7ed;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 8px 16px rgba(0,0,0,.1);
+  text-align:center;
+}
+.stat h3{font-size:28px;color:#78350f}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+th,td{
+  padding:14px;
+  border:1px solid #ddd;
+  text-align:center;
+}
+th{background:#fde68a}
+
+.note{
+  margin-top:20px;
+  line-height:1.6;
+}
+
+.amenities{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.amenity{
+  background:#fff7ed;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,.1);
+}
+
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.gallery-item{
+  position:relative;
+  margin:12px;
+}
+.gallery-item img{
+  width:260px;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,.2);
+}
+.gallery-item span{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  text-align:center;
+  padding:6px;
+  border-radius:0 0 12px 12px;
+}
+
+.contact p{line-height:1.8;font-size:16px}
+
 footer{
   background:#78350f;
   color:#fff;
@@ -140,130 +188,160 @@ footer{
 
 <body>
 
-<!-- REGISTER -->
-<div id="register" class="auth">
+<!-- REGISTRATION -->
+<div id="register-box" class="auth-box">
   <div class="auth-card">
     <h2>Student Registration</h2>
     <input id="regId" placeholder="Student ID">
     <input id="regPass" type="password" placeholder="Password">
-    <button onclick="registerUser()">Register</button>
+    <button onclick="register()">Register</button>
     <p>Already registered? <a onclick="showLogin()">Login</a></p>
   </div>
 </div>
 
 <!-- LOGIN -->
-<div id="login" class="auth" style="display:none">
+<div id="login-box" class="auth-box" style="display:none">
   <div class="auth-card">
     <h2>Student Login</h2>
     <input id="loginId" placeholder="Student ID">
     <input id="loginPass" type="password" placeholder="Password">
-    <button onclick="loginUser()">Login</button>
+    <button onclick="login()">Login</button>
   </div>
 </div>
 
-<!-- SITE -->
-<div id="site">
+<!-- MAIN SITE -->
+<div id="main-site">
 
 <header>
-  <div>
-    <h1>Mahi Girls Hostel</h1>
-    <p>CIDCO N7, Chhatrapati Sambhaji Nagar</p>
-  </div>
-
-  <!-- Hamburger -->
-  <div class="menu-btn" onclick="toggleMenu()">
-    <div></div><div></div><div></div>
-  </div>
-
-  <!-- Dropdown -->
-  <div class="menu" id="menu">
-    <a href="#about">About</a>
-    <a href="#rooms">Rooms</a>
-    <a href="#amenities">Amenities</a>
-    <a href="#contact">Contact</a>
-    <a class="logout" onclick="logoutUser()">Logout</a>
-  </div>
+  <h1>Mahi Girls Hostel</h1>
+  <p>CIDCO N7, Chhatrapati Sambhaji Nagar</p>
 </header>
 
 <nav>
   <a href="#about">About</a>
+  <a href="#stats">At a Glance</a>
   <a href="#rooms">Rooms</a>
   <a href="#amenities">Amenities</a>
+  <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <section id="about" class="about">
 <h2>About Our Hostel</h2>
-<p>
-Mahi Girls Hostel is a dedicated residential facility established with the primary objective
-of providing a safe, disciplined, and comfortable living environment for female students.
-</p>
+
+<p><b>Mahi Girls Hostel</b> is a dedicated residential facility established to provide a safe, disciplined, and comfortable living environment for female students. The hostel supports students not only with accommodation but also with an atmosphere that encourages academic focus, personal growth, and independent living.</p>
+
+<h3>Safe & Secure Living Environment</h3>
+<p>The hostel follows strict security protocols including controlled entry and exit, warden supervision, and continuous monitoring to ensure a secure environment at all times.</p>
+
+<h3>Comfortable Accommodation</h3>
+<p>Well-ventilated, spacious rooms with single, double, triple, and four sharing options are available. Regular cleaning ensures hygienic living conditions.</p>
+
+<h3>Academic-Friendly Atmosphere</h3>
+<p>Dedicated study areas and disciplined routines help students focus on academics without distractions.</p>
+
+<h3>Mess & Nutrition</h3>
+<p>A hygienic vegetarian mess provides nutritious meals with fixed timings.</p>
+
+<h3>Our Mission</h3>
+<p>To create a secure and supportive residential space where students can grow academically and personally.</p>
 </section>
 
-<section id="contact">
+<section id="stats">
+<h2>Hostel At a Glance</h2>
+<div class="stats">
+<div class="stat"><h3>10,000+</h3><p>Student Capacity</p></div>
+<div class="stat"><h3>200</h3><p>Total Rooms</p></div>
+<div class="stat"><h3>Single & Double</h3><p>Sharing Options</p></div>
+<div class="stat"><h3>24/7</h3><p>Security</p></div>
+<div class="stat"><h3>100%</h3><p>Safe for Girls</p></div>
+<div class="stat"><h3>Veg Mess</h3><p>Nutritious Meals</p></div>
+</div>
+</section>
+
+<section id="rooms">
+<h2>Rooms & Pricing</h2>
+<table>
+<tr><th>Room Type</th><th>Sharing</th><th>Monthly Charge</th><th>Available</th></tr>
+<tr><td>Single Sharing</td><td>1 Student</td><td>₹4000</td><td>40 Rooms</td></tr>
+<tr><td>Double Sharing</td><td>2 Students</td><td>₹2500</td><td>60 Rooms</td></tr>
+<tr><td>Triple Sharing</td><td>3 Students</td><td>₹2000</td><td>50 Rooms</td></tr>
+<tr><td>Four Sharing</td><td>4 Students</td><td>₹1800</td><td>50 Rooms</td></tr>
+</table>
+
+<div class="note">
+<p><b>Important Notes:</b></p>
+<ul>
+<li>Charges are per student</li>
+<li>Water, electricity & mess included</li>
+<li>Rooms allotted on first-come basis</li>
+</ul>
+</div>
+</section>
+
+<section id="amenities">
+<h2>Amenities</h2>
+<div class="amenities">
+<div class="amenity">Hygienic Vegetarian Mess</div>
+<div class="amenity">Dedicated Study Room</div>
+<div class="amenity">High-Speed Wi-Fi</div>
+<div class="amenity">24/7 Water & Power</div>
+<div class="amenity">Regular Housekeeping</div>
+<div class="amenity">Warden Supervision</div>
+<div class="amenity">CCTV Security</div>
+<div class="amenity">RO Drinking Water</div>
+<div class="amenity">First Aid Support</div>
+</div>
+</section>
+
+<section id="gallery">
+<h2>Gallery</h2>
+<div class="gallery">
+<div class="gallery-item"><img src="images/hostel front.jpg"><span>Hostel Front</span></div>
+<div class="gallery-item"><img src="images/hostel room.jpg"><span>Room</span></div>
+<div class="gallery-item"><img src="images/hostel room2.jpg"><span>Room</span></div>
+<div class="gallery-item"><img src="images/hostel_mess.jpg"><span>Mess</span></div>
+<div class="gallery-item"><img src="images/study room.png"><span>Study Room</span></div>
+<div class="gallery-item"><img src="images/washroom.jpg"><span>Washroom</span></div>
+</div>
+</section>
+
+<section id="contact" class="contact">
 <h2>Contact Us</h2>
 <p style="text-align:center">
-📍 CIDCO N7, Chhatrapati Sambhaji Nagar<br>
-📞 +91 7066XX32XX<br>
-📧 mahigirlshostel@gmail.com
+<b>Mahi Girls Hostel</b><br>
+📍 CIDCO N7, Chhatrapati Sambhaji Nagar, Maharashtra<br>
+📞 +91 7066XX32XX | +91 7066XX45XX<br>
+📧 mahigirlshostel@gmail.com<br>
+🕘 Mon–Sat: 9 AM – 7 PM
 </p>
 </section>
 
-<footer>© 2026 Mahi Girls Hostel</footer>
+<footer>
+© 2026 Mahi Girls Hostel. All Rights Reserved.
+</footer>
+
 </div>
 
 <script>
-// Get HTML elements
-const registerDiv = document.getElementById("register");
-const loginDiv = document.getElementById("login");
-const siteDiv = document.getElementById("site");
-const menuDiv = document.getElementById("menu");
-
-const regId = document.getElementById("regId");
-const regPass = document.getElementById("regPass");
-const loginId = document.getElementById("loginId");
-const loginPass = document.getElementById("loginPass");
-
-// Show login form
-function showLogin() {
-  registerDiv.style.display = "none";
-  loginDiv.style.display = "flex";
+function showLogin(){
+  document.getElementById("register-box").style.display="none";
+  document.getElementById("login-box").style.display="flex";
 }
-
-// Register
-function registerUser() {
-  if (!regId.value || !regPass.value) {
-    alert("Fill all fields");
-    return;
-  }
-  localStorage.setItem("id", regId.value);
-  localStorage.setItem("pass", regPass.value);
-  alert("Registration successful");
+function register(){
+  const id=regId.value.trim(),pass=regPass.value.trim();
+  if(!id||!pass){alert("Fill all fields");return;}
+  localStorage.setItem("studentId",id);
+  localStorage.setItem("studentPass",pass);
+  alert("Registered successfully");
   showLogin();
 }
-
-// Login
-function loginUser() {
-  if (
-    loginId.value === localStorage.getItem("id") &&
-    loginPass.value === localStorage.getItem("pass")
-  ) {
-    loginDiv.style.display = "none";
-    siteDiv.style.display = "block";
-  } else alert("Invalid login");
-}
-
-// Toggle menu
-function toggleMenu() {
-  menuDiv.style.display = menuDiv.style.display === "block" ? "none" : "block";
-}
-
-// Logout
-function logoutUser() {
-  localStorage.clear();
-  siteDiv.style.display = "none";
-  loginDiv.style.display = "flex";
-  menuDiv.style.display = "none";
+function login(){
+  if(loginId.value===localStorage.getItem("studentId") &&
+     loginPass.value===localStorage.getItem("studentPass")){
+    login-box.style.display="none";
+    main-site.style.display="block";
+  }else alert("Invalid credentials");
 }
 </script>
 
