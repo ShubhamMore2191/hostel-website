@@ -6,191 +6,85 @@
 <title>Mahi Girls Hostel</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:Segoe UI, Arial, sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
+body{background:#fff}
 
-body{
-  margin:0;
+/* ---------- AUTH ---------- */
+.auth-box{
+  min-height:100vh;display:flex;justify-content:center;align-items:center;
   background:linear-gradient(135deg,#fde68a,#fdba74);
 }
-
-/* AUTH PAGES */
-.auth-box{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
 .auth-card{
-  background:#fff;
-  padding:30px;
-  width:340px;
-  border-radius:14px;
-  box-shadow:0 15px 30px rgba(0,0,0,.25);
-  text-align:center;
+  background:#fff;padding:30px;width:340px;border-radius:14px;
+  box-shadow:0 15px 30px rgba(0,0,0,.25);text-align:center;
 }
-
-.auth-card h2{
-  color:#3f2a0a;
-  margin-bottom:20px;
-}
-
+.auth-card h2{margin-bottom:20px;color:#78350f}
 .auth-card input{
-  width:100%;
-  padding:12px;
-  margin-bottom:15px;
-  border-radius:8px;
-  border:1px solid #ccc;
+  width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #ccc
 }
-
 .auth-card button{
-  width:100%;
-  padding:12px;
-  background:#fb923c;
-  border:none;
-  color:#fff;
-  font-size:15px;
-  border-radius:8px;
-  cursor:pointer;
+  width:100%;padding:12px;background:#fb923c;border:none;color:#fff;
+  border-radius:8px;font-size:15px;cursor:pointer
 }
+.auth-card a{color:#fb923c;font-weight:600;cursor:pointer}
 
-.auth-card a{
-  color:#fb923c;
-  font-weight:600;
-  cursor:pointer;
-  text-decoration:none;
-}
-
-/* MAIN SITE */
-#main-site{
-  display:none;
-}
-
-/* HEADER */
+/* ---------- SITE ---------- */
+#main-site{display:none}
 header{
-  background:#fb923c;
-  text-align:center;
-  padding:25px;
+  background:url('images/hostel front.jpg') center/cover no-repeat;
+  height:70vh;color:#fff;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center
 }
+header h1{font-size:48px;background:rgba(0,0,0,.5);padding:10px 20px;border-radius:8px}
+header p{margin-top:10px;font-size:18px;background:rgba(0,0,0,.5);padding:6px 14px;border-radius:6px}
 
-header h1{
-  margin:0;
-  color:#3f2a0a;
-}
-
-header p{
-  color:#fff;
-}
-
-/* NAV */
 nav{
-  background:#78350f;
-  text-align:center;
-  padding:12px;
-  position:sticky;
-  top:0;
+  background:#78350f;padding:14px;text-align:center;position:sticky;top:0
+}
+nav a{color:#fff;margin:0 15px;text-decoration:none;font-weight:500}
+
+/* ---------- SECTIONS ---------- */
+section{max-width:1100px;margin:60px auto;padding:20px}
+section h2{text-align:center;color:#f59e0b;margin-bottom:30px;font-size:32px}
+
+.about p{text-align:center;font-size:18px;line-height:1.6}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
+.stat{
+  background:#fff7ed;padding:25px;border-radius:14px;
+  box-shadow:0 8px 16px rgba(0,0,0,.1);text-align:center
+}
+.stat h3{font-size:28px;color:#78350f}
+
+/* ---------- ROOMS ---------- */
+table{width:100%;border-collapse:collapse}
+th,td{padding:14px;border:1px solid #ddd;text-align:center}
+th{background:#fde68a}
+
+/* ---------- AMENITIES ---------- */
+.amenities{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.amenity{
+  background:#fff7ed;padding:20px;border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,.1)
 }
 
-nav a{
-  color:#fff;
-  margin:0 14px;
-  text-decoration:none;
-  font-weight:500;
-}
-
-/* SECTION */
-section{
-  max-width:1000px;
-  background:#fff;
-  margin:30px auto;
-  padding:25px;
-  border-radius:12px;
-  box-shadow:0 10px 20px rgba(0,0,0,.15);
-}
-
-h2{
-  color:#f59e0b;
-  margin-top:0;
-}
-
-/* INFO CARDS */
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.info-card{
-  background:#fff7ed;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 6px 12px rgba(0,0,0,.1);
-  text-align:center;
-}
-
-.info-card h3{
-  margin:10px 0;
-  color:#78350f;
-}
-
-/* ROOMS TABLE */
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-th,td{
-  padding:12px;
-  border:1px solid #ddd;
-  text-align:center;
-}
-
-th{
-  background:#fde68a;
-}
-
-/* GALLERY */
-.gallery{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.gallery-item{
-  position:relative;
-  margin:12px;
-}
-
+/* ---------- GALLERY ---------- */
+.gallery{display:flex;flex-wrap:wrap;justify-content:center}
+.gallery-item{position:relative;margin:12px}
 .gallery-item img{
-  width:240px;
-  height:170px;
-  object-fit:cover;
-  border-radius:12px;
-  box-shadow:0 6px 12px rgba(0,0,0,.2);
+  width:260px;height:180px;object-fit:cover;border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,.2)
 }
-
 .gallery-item span{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,.65);
-  color:#fff;
-  text-align:center;
-  padding:6px;
-  font-size:14px;
-  border-radius:0 0 12px 12px;
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(0,0,0,.65);color:#fff;text-align:center;
+  padding:6px;border-radius:0 0 12px 12px
 }
 
-/* FOOTER */
+/* ---------- FOOTER ---------- */
 footer{
-  background:#78350f;
-  color:#fff;
-  text-align:center;
-  padding:15px;
+  background:#78350f;color:#fff;text-align:center;padding:20px;margin-top:60px
 }
 </style>
 </head>
@@ -201,24 +95,24 @@ footer{
 <div id="register-box" class="auth-box">
   <div class="auth-card">
     <h2>Student Registration</h2>
-    <input type="text" id="regId" placeholder="Student ID">
-    <input type="password" id="regPass" placeholder="Password">
+    <input id="regId" placeholder="Student ID">
+    <input id="regPass" type="password" placeholder="Password">
     <button onclick="register()">Register</button>
     <p>Already registered? <a onclick="showLogin()">Login</a></p>
   </div>
 </div>
 
 <!-- LOGIN -->
-<div id="login-box" class="auth-box" style="display:none;">
+<div id="login-box" class="auth-box" style="display:none">
   <div class="auth-card">
     <h2>Student Login</h2>
-    <input type="text" id="loginId" placeholder="Student ID">
-    <input type="password" id="loginPass" placeholder="Password">
+    <input id="loginId" placeholder="Student ID">
+    <input id="loginPass" type="password" placeholder="Password">
     <button onclick="login()">Login</button>
   </div>
 </div>
 
-<!-- WEBSITE -->
+<!-- MAIN SITE -->
 <div id="main-site">
 
 <header>
@@ -227,91 +121,74 @@ footer{
 </header>
 
 <nav>
-  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#stats">Statistics</a>
   <a href="#rooms">Rooms</a>
+  <a href="#amenities">Amenities</a>
   <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="home">
-  <h2>Hostel Overview</h2>
-  <div class="info-grid">
-    <div class="info-card">
-      <h3>Total Capacity</h3>
-      <p><strong>10,000 Students</strong></p>
-    </div>
-    <div class="info-card">
-      <h3>Total Rooms</h3>
-      <p><strong>200 Rooms</strong></p>
-    </div>
-    <div class="info-card">
-      <h3>Security</h3>
-      <p>24/7 CCTV & Warden</p>
-    </div>
-    <div class="info-card">
-      <h3>Facilities</h3>
-      <p>Mess, Study Room, Wi-Fi</p>
-    </div>
+<section id="about" class="about">
+  <h2>About Our Hostel</h2>
+  <p>
+    Mahi Girls Hostel offers a secure, hygienic, and disciplined environment
+    focused on student comfort, safety, and academic excellence.
+  </p>
+</section>
+
+<section id="stats">
+  <h2>Hostel At a Glance</h2>
+  <div class="stats">
+    <div class="stat"><h3>10,000+</h3><p>Students Capacity</p></div>
+    <div class="stat"><h3>200</h3><p>Total Rooms</p></div>
+    <div class="stat"><h3>24/7</h3><p>Security & CCTV</p></div>
+    <div class="stat"><h3>100%</h3><p>Safe for Girls</p></div>
   </div>
 </section>
 
 <section id="rooms">
-  <h2>Rooms & Availability</h2>
+  <h2>Rooms & Pricing</h2>
   <table>
     <tr>
-      <th>Room Type</th>
-      <th>Sharing</th>
-      <th>Monthly Charge</th>
-      <th>Available Rooms</th>
+      <th>Room Type</th><th>Sharing</th><th>Charge / Month</th><th>Available</th>
     </tr>
     <tr>
-      <td>Single Sharing</td>
-      <td>1 Student</td>
-      <td>₹4000</td>
-      <td>40</td>
+      <td>Single Sharing</td><td>1 Student</td><td>₹4000</td><td>40 Rooms</td>
     </tr>
     <tr>
-      <td>Double Sharing</td>
-      <td>2 Students</td>
-      <td>₹2500</td>
-      <td>60</td>
+      <td>Double Sharing</td><td>2 Students</td><td>₹2500</td><td>60 Rooms</td>
     </tr>
   </table>
 </section>
 
+<section id="amenities">
+  <h2>Amenities</h2>
+  <div class="amenities">
+    <div class="amenity">Mess Facility (Veg)</div>
+    <div class="amenity">Study Room</div>
+    <div class="amenity">24/7 Water & Electricity</div>
+    <div class="amenity">Wi-Fi Facility</div>
+    <div class="amenity">Regular Cleaning</div>
+    <div class="amenity">Warden Supervision</div>
+  </div>
+</section>
+
 <section id="gallery">
-  <h2>Hostel Gallery</h2>
+  <h2>Gallery</h2>
   <div class="gallery">
-    <div class="gallery-item">
-      <img src="images/hostel front.jpg">
-      <span>Hostel Front</span>
-    </div>
-    <div class="gallery-item">
-      <img src="images/hostel room.jpg">
-      <span>Room 1</span>
-    </div>
-    <div class="gallery-item">
-      <img src="images/hostel room2.jpg">
-      <span>Room 2</span>
-    </div>
-    <div class="gallery-item">
-      <img src="images/hostel_mess.jpg">
-      <span>Mess Area</span>
-    </div>
-    <div class="gallery-item">
-      <img src="images/study room.png">
-      <span>Study Room</span>
-    </div>
-    <div class="gallery-item">
-      <img src="images/washroom.jpg">
-      <span>Washroom</span>
-    </div>
+    <div class="gallery-item"><img src="images/hostel front.jpg"><span>Hostel Front</span></div>
+    <div class="gallery-item"><img src="images/hostel room.jpg"><span>Room 1</span></div>
+    <div class="gallery-item"><img src="images/hostel room2.jpg"><span>Room 2</span></div>
+    <div class="gallery-item"><img src="images/hostel_mess.jpg"><span>Mess Area</span></div>
+    <div class="gallery-item"><img src="images/study room.png"><span>Study Room</span></div>
+    <div class="gallery-item"><img src="images/washroom.jpg"><span>Washroom</span></div>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
-  <p>
+  <h2>Contact Us</h2>
+  <p style="text-align:center">
     📍 CIDCO N7, Ch. Sambhaji Nagar<br>
     📞 +91 7066XX32XX
   </p>
@@ -325,27 +202,21 @@ footer{
 
 <script>
 function showLogin(){
-  document.getElementById("register-box").style.display="none";
-  document.getElementById("login-box").style.display="flex";
+  register-box.style.display="none";
+  login-box.style.display="flex";
 }
-
 function register(){
-  localStorage.setItem("id", regId.value);
-  localStorage.setItem("pass", regPass.value);
+  localStorage.setItem("id",regId.value);
+  localStorage.setItem("pass",regPass.value);
   alert("Registration successful");
   showLogin();
 }
-
 function login(){
-  if(
-    loginId.value === localStorage.getItem("id") &&
-    loginPass.value === localStorage.getItem("pass")
-  ){
-    document.getElementById("login-box").style.display="none";
-    document.getElementById("main-site").style.display="block";
-  } else {
-    alert("Invalid credentials");
-  }
+  if(loginId.value===localStorage.getItem("id") &&
+     loginPass.value===localStorage.getItem("pass")){
+    login-box.style.display="none";
+    main-site.style.display="block";
+  } else alert("Invalid credentials");
 }
 </script>
 
