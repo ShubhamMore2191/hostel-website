@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,7 +209,7 @@ footer{
 <div id="register-box" class="auth-box">
   <div class="auth-card">
     <h2>Student Registration</h2>
-    <input id="regId" placeholder="Student ID">
+    <input id="regId" type="text" placeholder="Student ID">
     <input id="regPass" type="password" placeholder="Password">
     <button onclick="register()">Register</button>
     <p>Already registered? <a onclick="showLogin()">Login</a></p>
@@ -219,7 +220,7 @@ footer{
 <div id="login-box" class="auth-box" style="display:none">
   <div class="auth-card">
     <h2>Student Login</h2>
-    <input id="loginId" placeholder="Student ID">
+    <input id="loginId" type="text" placeholder="Student ID">
     <input id="loginPass" type="password" placeholder="Password">
     <button onclick="login()">Login</button>
   </div>
@@ -245,23 +246,7 @@ footer{
 
 <section id="about" class="about">
 <h2>About Our Hostel</h2>
-
-<p><b>Mahi Girls Hostel</b> is a dedicated residential facility established to provide a safe, disciplined, and comfortable living environment for female students. The hostel supports students not only with accommodation but also with an atmosphere that encourages academic focus, personal growth, and independent living.</p>
-
-<h3>Safe & Secure Living Environment</h3>
-<p>The hostel follows strict security protocols including controlled entry and exit, warden supervision, and continuous monitoring to ensure a secure environment at all times.</p>
-
-<h3>Comfortable Accommodation</h3>
-<p>Well-ventilated, spacious rooms with single, double, triple, and four sharing options are available. Regular cleaning ensures hygienic living conditions.</p>
-
-<h3>Academic-Friendly Atmosphere</h3>
-<p>Dedicated study areas and disciplined routines help students focus on academics without distractions.</p>
-
-<h3>Mess & Nutrition</h3>
-<p>A hygienic vegetarian mess provides nutritious meals with fixed timings.</p>
-
-<h3>Our Mission</h3>
-<p>To create a secure and supportive residential space where students can grow academically and personally.</p>
+<p><b>Mahi Girls Hostel</b> is a dedicated residential facility established to provide a safe, disciplined, and comfortable living environment for female students.</p>
 </section>
 
 <section id="stats">
@@ -271,8 +256,6 @@ footer{
 <div class="stat"><h3>200</h3><p>Total Rooms</p></div>
 <div class="stat"><h3>Single & Double</h3><p>Sharing Options</p></div>
 <div class="stat"><h3>24/7</h3><p>Security</p></div>
-<div class="stat"><h3>100%</h3><p>Safe for Girls</p></div>
-<div class="stat"><h3>Veg Mess</h3><p>Nutritious Meals</p></div>
 </div>
 </section>
 
@@ -285,42 +268,6 @@ footer{
 <tr><td>Triple Sharing</td><td>3 Students</td><td>₹2000</td><td>50 Rooms</td></tr>
 <tr><td>Four Sharing</td><td>4 Students</td><td>₹1800</td><td>50 Rooms</td></tr>
 </table>
-
-<div class="note">
-<p><b>Important Notes:</b></p>
-<ul>
-<li>Charges are per student</li>
-<li>Water, electricity & mess included</li>
-<li>Rooms allotted on first-come basis</li>
-</ul>
-</div>
-</section>
-
-<section id="amenities">
-<h2>Amenities</h2>
-<div class="amenities">
-<div class="amenity">Hygienic Vegetarian Mess</div>
-<div class="amenity">Dedicated Study Room</div>
-<div class="amenity">High-Speed Wi-Fi</div>
-<div class="amenity">24/7 Water & Power</div>
-<div class="amenity">Regular Housekeeping</div>
-<div class="amenity">Warden Supervision</div>
-<div class="amenity">CCTV Security</div>
-<div class="amenity">RO Drinking Water</div>
-<div class="amenity">First Aid Support</div>
-</div>
-</section>
-
-<section id="gallery">
-<h2>Gallery</h2>
-<div class="gallery">
-<div class="gallery-item"><img src="images/hostel front.jpg"><span>Hostel Front</span></div>
-<div class="gallery-item"><img src="images/hostel room.jpg"><span>Room</span></div>
-<div class="gallery-item"><img src="images/hostel room2.jpg"><span>Room</span></div>
-<div class="gallery-item"><img src="images/hostel_mess.jpg"><span>Mess</span></div>
-<div class="gallery-item"><img src="images/study room.png"><span>Study Room</span></div>
-<div class="gallery-item"><img src="images/washroom.jpg"><span>Washroom</span></div>
-</div>
 </section>
 
 <section id="contact" class="contact">
@@ -329,8 +276,7 @@ footer{
 <b>Mahi Girls Hostel</b><br>
 📍 CIDCO N7, Chhatrapati Sambhaji Nagar, Maharashtra<br>
 📞 +91 7066XX32XX | +91 7066XX45XX<br>
-📧 mahigirlshostel@gmail.com<br>
-🕘 Mon–Sat: 9 AM – 7 PM
+📧 mahigirlshostel@gmail.com
 </p>
 </section>
 
@@ -353,6 +299,7 @@ function showLogin(){
   registerBox.style.display="none";
   loginBox.style.display="flex";
 }
+
 function register(){
   const id=regId.value.trim(),pass=regPass.value.trim();
   if(!id||!pass){alert("Fill all fields");return;}
@@ -361,6 +308,7 @@ function register(){
   alert("Registered successfully");
   showLogin();
 }
+
 function login(){
   if(loginId.value===localStorage.getItem("studentId") &&
      loginPass.value===localStorage.getItem("studentPass")){
@@ -368,6 +316,7 @@ function login(){
     mainSite.style.display="block";
   }else alert("Invalid credentials");
 }
+
 function logout(){
   localStorage.clear();
   mainSite.style.display="none";
@@ -377,3 +326,4 @@ function logout(){
 
 </body>
 </html>
+```
